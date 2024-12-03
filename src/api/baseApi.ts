@@ -1,14 +1,17 @@
 import axios, { AxiosInstance } from "axios";
 
 export class BaseApi {
-    protected axios: AxiosInstance;
+  
+  protected axios: AxiosInstance;
 
-    constructor(baseURL = process.env.NEXT_BASE_URL) {
-        this.axios = axios.create({
-            baseURL: baseURL, timeout: 10000,
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-    }
-}
+  constructor(baseUrl: string) {
+    this.axios = axios.create({
+      baseURL: baseUrl, timeout: 10000,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+
+}  
+
