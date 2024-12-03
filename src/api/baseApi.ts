@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 
 export class BaseApi {
+  
   protected axios: AxiosInstance;
 
   constructor(baseUrl: string) {
@@ -13,3 +14,4 @@ export class BaseApi {
   }
 
 }  
+
