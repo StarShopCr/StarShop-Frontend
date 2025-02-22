@@ -64,3 +64,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .form-input-field {
+    @apply w-full bg-[#1a1b26] border-primary-purple/30 border-2 text-white text-lg p-4 rounded-lg placeholder:text-gray-400 
+    hover:bg-[#24253a] focus:bg-[#24253a] focus:outline-none focus:ring-2 focus:ring-primary-purple
+    transition-colors duration-200;
+  }
+  .form-label {
+    @apply text-white text-lg;
+  }
+
+}
