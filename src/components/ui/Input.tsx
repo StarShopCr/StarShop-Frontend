@@ -2,11 +2,13 @@ import { FC } from "react";
 import { LucideIcon } from "lucide-react";
 
 interface InputProps {
-  label: string;
+  label?: string;
   id: string;
   type: string;
   placeholder?: string;
   name: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   icon?: LucideIcon;
   className?: string;
   labelClassName?: string;
@@ -20,10 +22,12 @@ const Input: FC<InputProps> = ({
   type,
   placeholder,
   name,
+  value,
+  onChange,
   icon: Icon,
   className = "",
-  labelClassName = "text-lg text-white",
-  centered = true,
+  labelClassName = "text-xs font-semibold tracking-wide text-white uppercase",
+  centered = false, 
   containerClassName = "",
 }) => {
   return (
