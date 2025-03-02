@@ -27,11 +27,11 @@ const Input: FC<InputProps> = ({
   icon: Icon,
   className = "",
   labelClassName = "text-xs font-semibold tracking-wide text-white uppercase",
-  centered = false, 
+  centered = false,
   containerClassName = "",
 }) => {
   return (
-    <div className={`flex flex-col gap-2 ${containerClassName}`}>
+    <div className={`flex flex-col items-start gap-2 ${containerClassName}`}>
       {label && (
         <label htmlFor={id} className={labelClassName}>
           {label}
@@ -43,9 +43,8 @@ const Input: FC<InputProps> = ({
         )}
         <input
           className={`w-full bg-[#0E0E1B] border border-[rgba(168,85,247,0.2)]
-] 
             text-[#9CA3AF] p-3 rounded-md outline-none transition
-            focus:border-[#A855F7] focus:ring-2 focus:ring-[#A855F7] 
+            focus:border-[#A855F7] focus:ring-2 focus:ring-[#A855F7]
             placeholder-gray-500 ${Icon ? "pl-14" : "pl-3"} ${className}`}
           id={id}
           type={type}
