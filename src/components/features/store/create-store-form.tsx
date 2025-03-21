@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import StarShopLanding from "../../../public/starshop-logos/StarShop-Logo-Landing.svg";
-import Input from "@/components/ui/Input";
+import Input from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";

@@ -3,7 +3,7 @@
 import React from "react";
 import UploadPhotoProfile from "@/components/ui/UploadPhotoProfile";
 import StarShopCard from "@/components/ui/StarShopCard";
-import Input from "@/components/ui/Input";
+import Input from "@/components/ui/input";
 import { MapPinned, Store } from "lucide-react";
 import { NotebookText } from "lucide-react";
 

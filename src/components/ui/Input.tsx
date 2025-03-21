@@ -1,62 +1,22 @@
-import { FC } from "react";
-import { LucideIcon } from "lucide-react";
+import * as React from "react"
 
-interface InputProps {
-  label?: string;
-  id: string;
-  type: string;
-  placeholder?: string;
-  name: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  icon?: LucideIcon;
-  className?: string;
-  labelClassName?: string;
-  centered?: boolean;
-  containerClassName?: string;
-}
+import { cn } from "@/lib/utils"
 
-const Input: FC<InputProps> = ({
-  label,
-  id,
-  type,
-  placeholder,
-  name,
-  value,
-  onChange,
-  icon: Icon,
-  className = "",
-  labelClassName = "text-xs font-semibold tracking-wide text-white uppercase",
-  centered = false, 
-  containerClassName = "",
-}) => {
-  return (
-    <div className={`flex flex-col gap-2 ${containerClassName}`}>
-      {label && (
-        <label htmlFor={id} className={labelClassName}>
-          {label}
-        </label>
-      )}
-      <div className="relative">
-        {Icon && (
-          <Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
+const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+          className
         )}
-        <input
-          className={`w-full bg-[#0E0E1B] border border-[rgba(168,85,247,0.2)]
-] 
-            text-[#9CA3AF] p-3 rounded-md outline-none transition
-            focus:border-[#A855F7] focus:ring-2 focus:ring-[#A855F7] 
-            placeholder-gray-500 ${Icon ? "pl-14" : "pl-3"} ${className}`}
-          id={id}
-          type={type}
-          placeholder={placeholder}
-          name={name}
-          value={value}
-          onChange={onChange}
-        />
-      </div>
-    </div>
-  );
-};
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Input.displayName = "Input"
 
-export default Input;
+export { Input }

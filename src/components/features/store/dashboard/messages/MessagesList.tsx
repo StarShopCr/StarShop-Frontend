@@ -1,5 +1,5 @@
 import { Search, User } from "lucide-react";
-import Input from "@/components/ui/Input";
+import Input from "@/components/ui/input";
 
 interface Conversation {
   id: string;
