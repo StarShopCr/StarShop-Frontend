@@ -39,10 +39,30 @@ const revenueData = [
 
 // Traffic source data using shadcn pattern
 const trafficSourceData = [
-  { source: "Direct", value: 40, fill: "var(--color-direct)" },
-  { source: "Social", value: 30, fill: "var(--color-social)" },
-  { source: "Search", value: 20, fill: "var(--color-search)" },
-  { source: "Referral", value: 10, fill: "var(--color-referral)" },
+  {
+    key: "direct",
+    label: "Direct",
+    value: 40,
+    color: "hsl(var(--chart-1))",
+  },
+  {
+    key: "social",
+    label: "Social",
+    value: 30,
+    color: "hsl(var(--chart-2))",
+  },
+  {
+    key: "search",
+    label: "Search",
+    value: 20,
+    color: "hsl(var(--chart-3))",
+  },
+  {
+    key: "referral",
+    label: "Referral",
+    value: 10,
+    color: "hsl(var(--chart-4))",
+  },
 ];
 
 // Chart configurations using shadcn pattern
@@ -83,15 +103,7 @@ export default function RevenueTrafficOverview() {
     return () => setMounted(false);
   }, []);
 
-  if (!mounted) {
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="col-span-2 h-[400px] flex items-center justify-center">
-          <p className="text-gray-400">Loading charts...</p>
-        </div>
-      </div>
-    );
-  }
+  if (!mounted) return;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -260,32 +272,7 @@ export default function RevenueTrafficOverview() {
 
             {/* Traffic Sources Legend with Progress Bars */}
             <div className="w-full md:w-1/2 space-y-4">
-              {[
-                {
-                  key: "direct",
-                  label: "Direct",
-                  value: 40,
-                  color: "hsl(var(--chart-1))",
-                },
-                {
-                  key: "social",
-                  label: "Social",
-                  value: 30,
-                  color: "hsl(var(--chart-2))",
-                },
-                {
-                  key: "search",
-                  label: "Search",
-                  value: 20,
-                  color: "hsl(var(--chart-3))",
-                },
-                {
-                  key: "referral",
-                  label: "Referral",
-                  value: 10,
-                  color: "hsl(var(--chart-4))",
-                },
-              ].map((item) => (
+              {trafficSourceData.map((item) => (
                 <div key={item.key} className="space-y-1">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
