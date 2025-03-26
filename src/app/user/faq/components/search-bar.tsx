@@ -22,7 +22,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           placeholder={placeholder} 
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full py-4 pl-12 pr-4 rounded-xl bg-transparent border border-white border-opacity-5 text-white shadow-[0_0_15px_rgba(255,255,255,0.03)] focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="w-full py-4 pl-12 pr-4 rounded-xl bg-transparent border border-white border-opacity-5 text-white shadow-[0_0_15px_rgba(255,255,255,0.2)] focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
       </div>
     </div>
