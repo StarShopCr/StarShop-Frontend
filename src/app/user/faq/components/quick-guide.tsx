@@ -24,7 +24,7 @@ const Card: React.FC<CardProps> = ({
   isPrimary = false,
   linkIcon = <ChevronRight size={20} />
 }) => {
-  const cardStyle = "p-6 rounded-2xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white border-opacity-5 bg-black bg-opacity-5 ";
+  const cardStyle = " p-6 rounded-2xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white border-opacity-5 bg-black bg-opacity-5 ";
   const btnStyle = "flex items-center justify-between bg-transparent text-white py-3 px-4 rounded-lg hover:bg-white hover:bg-opacity-5 border border-white border-opacity-5 ";
   const primaryBtnStyle = "flex items-center justify-between bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700";
 
@@ -57,7 +57,7 @@ const Card: React.FC<CardProps> = ({
 
 const QuickGuideCards: React.FC = () => {
   return (
-    <div className="w-full  grid grid-cols-1 md:grid-cols-3 gap-[2em] mb-10">
+    <div className="w-full  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[2em] mb-10">
       <Card 
         icon={<Package size={24} />}
         title="New to StarShop?"
