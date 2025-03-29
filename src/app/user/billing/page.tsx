@@ -1,5 +1,13 @@
 "use client"
 
+// import ConnectedWallet from "@/components/features/user/billing/connected-wallet";
+import React from "react";
+
+export default function Page() {
+  return (
+    <div className="space-y-6 p-6 bg-starshopBackground ">
+      {/* <ConnectedWallet /> */}
+
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import StellarWallet from "@/components/features/user/billing/stellar-wallets"
@@ -32,6 +40,7 @@ export default function BillingPage() {
           </div>
         </div>
       </div>
+
     </div>
   )
 }
