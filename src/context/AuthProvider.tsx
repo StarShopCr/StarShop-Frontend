@@ -2,7 +2,7 @@
 
 import React, { createContext, useState, useEffect } from "react";
 import { UserSession } from "@/types/user.types";
-import { securelyStoreJWT, retrieveSecureJWT } from "@/utils/encryptJWT";
+import { getSessionFromCookies } from "@/lib/authCookie";
 
 interface AuthContextType {
   user: UserSession | null;
@@ -28,37 +28,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [user, setUserState] = useState<UserSession | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
-  // Load user data from localStorage and decrypt JWT on component mount
+  // Load user data from cookies on component mount
   useEffect(() => {
     const loadUserData = async () => {
       try {
-        // Try to retrieve and decrypt JWT token
-        const token = await retrieveSecureJWT();
+        const { token, role } = getSessionFromCookies(document.cookie);
 
-        if (token) {
-          // Get user data from localStorage
-          const storedUser = localStorage.getItem("user_data");
+        if (token && role) {
+          // Create user session from cookie data
+          const userSession: UserSession = {
+            id: `user_${role}`, // Generate a unique ID based on role
+            token,
+            role,
+            name: role.charAt(0).toUpperCase() + role.slice(1), // Example name based on role
+            email: `${role}@example.com`, // Example email based on role
+          };
 
-          if (storedUser) {
-            const parsedUser = JSON.parse(storedUser) as UserSession;
-            // Verify token matches the one in user data
-            if (parsedUser.token === token) {
-              setUserState(parsedUser);
-              setIsAuthenticated(true);
-            }
-          }
+          setUserState(userSession);
+          setIsAuthenticated(true);
         } else {
-          // No valid token found, ensure user is logged out
+          // No valid session found
           setUserState(null);
           setIsAuthenticated(false);
-          localStorage.removeItem("user_data");
         }
       } catch (error) {
         console.error("Failed to load authenticated user:", error);
-        // Clean up in case of error
         setUserState(null);
         setIsAuthenticated(false);
-        localStorage.removeItem("user_data");
       }
     };
 
@@ -67,12 +63,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const login = async (userData: UserSession) => {
     try {
-      // Store user data without the sensitive token
-      const userDataForStorage = { ...userData };
-      localStorage.setItem("user_data", JSON.stringify(userDataForStorage));
-
-      // Encrypt and store JWT token separately
-      await securelyStoreJWT(userData.token);
+      // Set cookies separately
+      document.cookie = `auth_token=${userData.token}; Path=/; SameSite=Lax; Max-Age=86400`;
+      document.cookie = `user_role=${userData.role}; Path=/; SameSite=Lax; Max-Age=86400`;
 
       // Update state
       setUserState(userData);
@@ -84,21 +77,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const logout = () => {
+    // Clear cookies separately
+    document.cookie = 'auth_token=; Path=/; SameSite=Lax; Max-Age=0';
+    document.cookie = 'user_role=; Path=/; SameSite=Lax; Max-Age=0';
+
+    // Update state
     setUserState(null);
     setIsAuthenticated(false);
-
-    // Clear stored data
-    localStorage.removeItem("user_data");
-    localStorage.removeItem("encrypted_jwt");
   };
 
   const setUser = async (userData: UserSession) => {
     try {
-      // Store user data
-      localStorage.setItem("user_data", JSON.stringify(userData));
-
-      // Encrypt and store JWT token
-      await securelyStoreJWT(userData.token);
+      // Update cookies separately
+      document.cookie = `auth_token=${userData.token}; Path=/; SameSite=Lax; Max-Age=86400`;
+      document.cookie = `user_role=${userData.role}; Path=/; SameSite=Lax; Max-Age=86400`;
 
       // Update state
       setUserState(userData);
