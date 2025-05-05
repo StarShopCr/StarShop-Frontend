@@ -3,7 +3,6 @@ import ReactQueryProvider from "@/providers/query-client-provider";
 import "./globals.css";
 import ClientSidebar from "@/components/ui/client-sidebar";
 import { AuthProvider } from "@/context/AuthProvider";
-import NavigationGuard from "@/components/auth/NavigationGuard";
 
 export const metadata: Metadata = {
   title: "StarShop",
@@ -24,9 +23,7 @@ export default function RootLayout({
           <div className="flex flex-col lg:flex-row min-h-screen w-full">
             <ClientSidebar />
             <main className="flex-1 overflow-y-auto">
-              <NavigationGuard>
-                <ReactQueryProvider>{children}</ReactQueryProvider>
-              </NavigationGuard>
+              <ReactQueryProvider>{children}</ReactQueryProvider>
             </main>
           </div>
         </AuthProvider>
