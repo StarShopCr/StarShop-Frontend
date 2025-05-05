@@ -1,19 +1,17 @@
 // pages/nft-collection.tsx
 import React, { useState } from "react";
 
-import StatsCard from "./StatsCard ";
+import StatsCard from "@/components/ui/StarShopCard";
 
 import { 
-  Diamond, 
   Shirt, 
   Tag, 
-  DollarSign,
   Calculator, 
   ArrowLeft, 
   Filter,
   LayoutGrid,
-   List,
-   Gem
+  List,
+  Gem
 } from "lucide-react";
 
 
@@ -58,11 +56,11 @@ const NFTCollection: React.FC = () => {
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const totalNFTs = nftItems.length;
-  const clothingRewards = nftItems.filter(
+  const totalNFTs = filteredItems.length;
+  const clothingRewards = filteredItems.filter(
     (item) => item.type === "clothing"
   ).length;
-  const redeemableCoupons = nftItems.filter(
+  const redeemableCoupons = filteredItems.filter(
     (item) => item.type === "coupon"
   ).length;
   const estimatedValue = 450; 
@@ -83,30 +81,36 @@ const NFTCollection: React.FC = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <StatsCard
-            icon={<Gem size={24}  strokeWidth={1.5} className="w-5 h-5 text-purple-400" />}
+            icon={Gem}
             title="Total NFTs"
             value={`${totalNFTs}`}
-            bgColor="bg-[#1a1b1e]/30"
+            subtitle="Total NFTs in collection"
+            iconColor="text-purple-400"
+            borderColor="bg-purple-500"
           />
           <StatsCard
-            icon={<Shirt className="w-5 h-5 text-blue-400" />}
+            icon={Shirt}
             title="Clothing Rewards"
             value={`${clothingRewards}`}
-            bgColor="bg-[#1a1b1e]/30"
+            subtitle="Available clothing items"
+            iconColor="text-blue-400"
+            borderColor="bg-blue-500"
           />
           <StatsCard
-            icon={<Tag className="w-5 h-5 text-yellow-400" />}
+            icon={Tag}
             title="Redeemable Coupons"
             value={`${redeemableCoupons}`}
-            bgColor="bg-[#1a1b1e]/30"
+            subtitle="Active coupons"
+            iconColor="text-yellow-400"
+            borderColor="bg-yellow-500"
           />
           <StatsCard
-            icon={
-              <Calculator className="w-5 h-5 text-green-400" />
-            }
+            icon={Calculator}
             title="Estimated Value"
             value={`${estimatedValue} XLM`}
-            bgColor="bg-[#1a1b1e]/30"
+            subtitle="Total collection value"
+            iconColor="text-green-400"
+            borderColor="bg-green-500"
           />
         </div>
 

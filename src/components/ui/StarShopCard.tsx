@@ -17,6 +17,8 @@ const StatsCard = ({
   iconColor,
   borderColor,
 }: StatsCardProps) => {
+  if (!Icon) return null; // Guard against undefined Icon
+
   return (
     <div className="bg-[#170d243b] rounded-xl p-5 border border-[#1a1c3d] relative overflow-hidden">
       <div className="flex justify-between items-start">
