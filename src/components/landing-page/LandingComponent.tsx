@@ -3,6 +3,7 @@ import StarShopLanding from "../../../public/starshop-logos/StarShop-Logo-Landin
 import Link from 'next/link'
 import Image from "next/image"
 import { ConnectWalletButton } from '../ui';
+import OfflineNotice from '../ui/NetworkStatus';
 
 const LandingPageComponent: React.FC = () => {
   return (
@@ -50,11 +51,12 @@ const LandingPageComponent: React.FC = () => {
             width={700}
             height={20}
           />
+          <OfflineNotice/>
         </section>
       </section>
     </main>
-    
-      
+
+
       </>
   );
 };
