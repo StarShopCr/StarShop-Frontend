@@ -1,8 +1,28 @@
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Theme transition overrides - must come before Tailwind base */
+@layer utilities {
+  /* Override all transition classes for synchronized theme switching */
+  .transition-colors,
+  .transition-all,
+  .transition,
+  [class*="transition-"] {
+    transition: 
+      background-color 0.3s ease-in-out, 
+      border-color 0.3s ease-in-out, 
+      color 0.3s ease-in-out,
+      fill 0.3s ease-in-out,
+      stroke 0.3s ease-in-out,
+      opacity 0.3s ease-in-out,
+      box-shadow 0.3s ease-in-out,
+      backdrop-filter 0.3s ease-in-out,
+      background-image 0.3s ease-in-out,
+      transform 0.3s ease-in-out !important;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -58,13 +78,48 @@
     --chart-5: 340 75% 55%;
   }
 }
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
-    
     @apply bg-background text-foreground;
+  }
+  
+  /* Comprehensive smooth theme transitions */
+  *,
+  *::before,
+  *::after {
+    transition: 
+      background-color 0.3s ease-in-out, 
+      border-color 0.3s ease-in-out, 
+      color 0.3s ease-in-out,
+      fill 0.3s ease-in-out,
+      stroke 0.3s ease-in-out,
+      opacity 0.3s ease-in-out,
+      box-shadow 0.3s ease-in-out,
+      backdrop-filter 0.3s ease-in-out,
+      background-image 0.3s ease-in-out !important;
+  }
+  
+  /* Ensure root element transitions properly */
+  html {
+    transition: 
+      background-color 0.3s ease-in-out, 
+      color 0.3s ease-in-out !important;
+  }
+  
+  /* Force transition on elements that might override */
+  [class*="bg-"], 
+  [class*="text-"], 
+  [class*="border-"],
+  [class*="shadow-"] {
+    transition: 
+      background-color 0.3s ease-in-out, 
+      border-color 0.3s ease-in-out, 
+      color 0.3s ease-in-out,
+      box-shadow 0.3s ease-in-out !important;
   }
 }
 
@@ -81,6 +136,7 @@
   -webkit-box-shadow: -1px 1px 30px -13px rgba(255,255,255,1);
   -moz-box-shadow: -1px 1px 30px -13px rgba(255,255,255,1);
   box-shadow: -1px 1px 30px -13px rgba(255,255,255,1);
+  transition: box-shadow 0.3s ease-in-out !important;
 }
 
 @import "@fontsource/inter";

@@ -70,7 +70,7 @@ export default function Dashboard() {
     <div className="container mx-auto p-6">
       {/* Welcome section */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white">
+        <h1 className="text-3xl font-bold dark:text-white">
           Welcome back, {user?.name || "User"}
         </h1>
         <p className="text-gray-400 mt-1">
@@ -83,7 +83,7 @@ export default function Dashboard() {
         {statsCards.map((card, index) => (
           <div
             key={index}
-            className="p-6 rounded-lg border border-white/10 bg-[#0F0E1D] shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_12px_rgba(255,255,255,0.2)] transition-shadow"
+            className="p-6 rounded-lg border dark:border-white/10 border-black/10 bg-background shadow-[0_0_8px_rgba(255,255,255,0.1)] dark:hover:shadow-[0_0_12px_rgba(255,255,255,0.2)] transition-shadow hover:shadow-[0_0_12px_rgba(0,0,0,0.2)]"
           >
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-gray-400 font-medium">{card.title}</h2>
@@ -91,7 +91,7 @@ export default function Dashboard() {
             </div>
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-2xl font-bold text-white">{card.value}</p>
+                <p className="text-2xl font-bold dark:text-white">{card.value}</p>
                 <p
                   className={`text-sm font-medium ${
                     card.trend === "up" ? "text-green-500" : "text-red-500"
@@ -119,9 +119,9 @@ export default function Dashboard() {
       {/* Charts and events section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Chart area */}
-        <div className="lg:col-span-2 p-6 rounded-lg border border-white/10 bg-[#0F0E1D] shadow-[0_0_8px_rgba(255,255,255,0.1)]">
+        <div className="lg:col-span-2 p-6 rounded-lg border dark:border-white/10 border-black/10 bg-background shadow-[0_0_8px_rgba(255,255,255,0.1)]">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-lg font-semibold text-white">
+            <h2 className="text-lg font-semibold dark:text-white">
               Sales Performance
             </h2>
             <div className="flex space-x-2">
@@ -145,9 +145,9 @@ export default function Dashboard() {
         </div>
 
         {/* Events card */}
-        <div className="p-6 rounded-lg border border-white/10 bg-[#0F0E1D] shadow-[0_0_8px_rgba(255,255,255,0.1)]">
+          <div className="p-6 rounded-lg border dark:border-white/10 border-black/10 bg-background shadow-[0_0_8px_rgba(255,255,255,0.1)]">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-lg font-semibold text-white">
+            <h2 className="text-lg font-semibold dark:text-white">
               Upcoming Events
             </h2>
             <Calendar className="w-5 h-5 text-purple-400" />
@@ -156,10 +156,10 @@ export default function Dashboard() {
             {upcomingEvents.map((event, index) => (
               <div
                 key={index}
-                className="p-3 rounded-lg bg-white/5 border border-white/5"
+                className="p-3 rounded-lg bg-white/5 border dark:border-white/5 border-black/5"
               >
                 <div className="flex justify-between items-center">
-                  <h3 className="font-medium text-white">{event.title}</h3>
+                  <h3 className="font-medium dark:text-white">{event.title}</h3>
                   <span className="text-sm text-purple-400">{event.date}</span>
                 </div>
                 <p className="text-sm text-gray-400 mt-1">

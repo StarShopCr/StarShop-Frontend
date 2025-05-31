@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { Menu } from 'lucide-react';
 import Sidebar from './sidebar';
 
 const sidebarRoutes = [
@@ -30,16 +31,10 @@ export default function ClientSidebar() {
     <>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-gray-800 rounded-md"
+        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-card border border-border rounded-md hover:bg-muted transition-colors"
+        aria-label="Toggle sidebar"
       >
-        <svg 
-          width="24" 
-          height="24" 
-          viewBox="0 0 24 24" 
-          fill="white"
-        >
-          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-        </svg>
+        <Menu className="w-6 h-6 text-foreground" />
       </button>
       
       {isOpen && (

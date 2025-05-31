@@ -9,9 +9,9 @@ const InventoryStatus = () => {
   const [outOfStock] = useState(6);
 
   return (
-    <div className="bg-[#13111e6b] border border-[#2b2934] rounded-xl p-6">
+    <div className="dark:bg-[#13111e6b] border border-black/20 dark:border-[#2b2934] rounded-xl p-6">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold">Inventory Status</h2>
+        <h2 className="text-lg font-semibold dark:text-white text-black">Inventory Status</h2>
         <div className="text-purple-500">
           <Package size={24} />
         </div>
@@ -76,10 +76,10 @@ const InventoryStatus = () => {
           </svg>
 
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-3xl font-bold text-white">
+            <span className="text-3xl font-bold dark:text-white text-black">
               {totalProducts}
             </span>
-            <span className="text-xs text-gray-400 text-center">
+            <span className="text-xs dark:text-gray-400 text-black text-center">
               Total
               <br />
               Products
