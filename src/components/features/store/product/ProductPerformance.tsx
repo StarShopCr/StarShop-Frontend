@@ -10,9 +10,9 @@ const ProductPerformance = () => {
   ]);
 
   return (
-    <div className="bg-[#13111e6b] border border-[#2b2934] rounded-xl p-6">
+    <div className="dark:bg-[#13111e6b] border border-black/20 dark:border-[#2b2934] rounded-xl p-6">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold">Product Performance</h2>
+        <h2 className="text-lg font-semibold dark:text-white text-black">Product Performance</h2>
         <div className="text-[#9333ea]">
           <ChartNoAxesColumn size={24} />
         </div>
@@ -26,8 +26,8 @@ const ProductPerformance = () => {
           <div key={index} className="flex justify-between items-center">
             <div className="w-full">
               <div className="flex justify-between mb-1">
-                <span>{product.name}</span>
-                <span className="text-[#a1a0a5]">{product.sold} sold</span>
+                <span className="dark:text-white text-black">{product.name}</span>
+                <span className="dark:text-[#a1a0a5] text-black">{product.sold} sold</span>
               </div>
               <div className="w-full bg-gray-800 rounded-full h-2">
                 <div

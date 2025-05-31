@@ -3,7 +3,9 @@ import ReactQueryProvider from "@/providers/query-client-provider";
 import "./globals.css";
 import ClientSidebar from "@/components/ui/client-sidebar";
 import { AuthProvider } from "@/context/AuthProvider";
+import { ThemeProvider } from "@/context/ThemeProvider";
 import NavigationGuard from "@/components/auth/NavigationGuard";
+import { Header } from "@/components/ui/header";
 
 export const metadata: Metadata = {
   title: "StarShop",
@@ -18,18 +20,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-starshopBackground overflow-x-hidden">
-        <AuthProvider>
-          <div className="flex flex-col lg:flex-row min-h-screen w-full">
-            <ClientSidebar />
-            <main className="flex-1 overflow-y-auto">
-              <NavigationGuard>
-                <ReactQueryProvider>{children}</ReactQueryProvider>
-              </NavigationGuard>
-            </main>
-          </div>
-        </AuthProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className="overflow-x-hidden bg-background text-foreground dark:bg-starshopBackground">
+        <ThemeProvider defaultTheme="system" storageKey="starshop-theme">
+          <AuthProvider>
+            <div className="flex flex-col lg:flex-row min-h-screen w-full">
+              <ClientSidebar />
+              <main className="flex-1 overflow-y-auto">
+                <Header />
+                <NavigationGuard>
+                  <ReactQueryProvider>{children}</ReactQueryProvider>
+                </NavigationGuard>
+              </main>
+            </div>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
