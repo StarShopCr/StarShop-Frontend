@@ -30,6 +30,11 @@ interface NavSection {
   items: NavItem[];
 }
 
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
 const navSections: NavSection[] = [
   {
     title: "Overview",
@@ -63,7 +68,7 @@ const bottomNavItems: NavItem[] = [
   { title: "Help", path: "/help", icon: HelpCircle },
 ];
 
-const Sidebar: FC = () => {
+export const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
@@ -78,36 +83,51 @@ const Sidebar: FC = () => {
   );
 
   return (
-    <aside className="w-64 min-h-screen bg-card border-r border-border text-card-foreground p-2 flex flex-col">
-      <div className="flex-1">
-        <div className="flex justify-center mb-2">
-          <Image src="/starshop-logos/starshop-logo.svg" alt="StarShop Logo" width={60} height={60} className="mb-1" />
+    <>
+      {isOpen && (
+        <div 
+          className="fixed inset-0 z-30 bg-black bg-opacity-50 lg:hidden"
+          onClick={onClose}
+        />
+      )}
+      <aside className={`
+        fixed lg:relative lg:sticky lg:top-0
+        top-0 left-0 h-full
+        w-64 shrink-0
+        transform transition-transform duration-300 ease-in-out
+        ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        z-40 overflow-y-auto max-h-screen
+        bg-card text-white p-2 flex flex-col
+      `}>
+
+        <div className="flex-1">
+          <div className="flex justify-center mb-2">
+            <Image src="/starshop-logos/starshop-logo.svg" alt="StarShop Logo" width={60} height={60} className="mb-1" />
+          </div>
+
+          <div className="my-2 -mx-6 border-t border-gray-700/30"></div>
+          
+          {navSections.map((section, index) => (
+            <div key={index} className="mb-2">
+              <h2 className="text-[12px] font-semibold mb-4">{section.title}</h2>
+              <nav className="space-y-3">
+                {section.items.map((item, itemIndex) => (
+                  <NavLink key={itemIndex} {...item} />
+                ))}
+              </nav>
+            </div>
+          ))}
         </div>
 
-        <div className="my-2 border-t border-border -mx-6"></div>
-        
-        {navSections.map((section, index) => (
-          <div key={index} className="mb-2">
-            <h2 className="text-[12px] font-semibold mb-4 text-muted-foreground">{section.title}</h2>
-            <nav className="space-y-3">
-              {section.items.map((item, itemIndex) => (
-                <NavLink key={itemIndex} {...item} />
-              ))}
-            </nav>
-          </div>
-        ))}
-      </div>
-
-      <div>
-        <div className="my-2 border-t border-border -mx-6"></div>
-        <nav className="space-y-3">
-          {bottomNavItems.map((item, index) => (
-            <NavLink key={index} {...item} />
-          ))}
-        </nav>
-      </div>
-    </aside>
+        <div>
+          <div className="my-2 -mx-6 border-t border-gray-700/30"></div>
+          <nav className="space-y-3">
+            {bottomNavItems.map((item, index) => (
+              <NavLink key={index} {...item} />
+            ))}
+          </nav>
+        </div>
+      </aside>
+    </>
   );
 };
-
-export default Sidebar;

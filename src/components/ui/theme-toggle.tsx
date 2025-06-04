@@ -12,11 +12,12 @@ export function ThemeToggle() {
   };
 
   return (
+    <div className="fixed z-50 top-3 right-32">
     <Button
       variant="ghost"
       size="sm"
       onClick={toggleTheme}
-      className="h-9 w-9 p-0 hover:bg-white/10 dark:hover:bg-white/10"
+      className="p-0 h-9 w-9 hover:bg-white/10 dark:hover:bg-white/10"
       aria-label={`Switch to ${actualTheme === "light" ? "dark" : "light"} mode`}
       style={{
         transition: 'background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out'
@@ -46,5 +47,6 @@ export function ThemeToggle() {
       </div>
       <span className="sr-only">Toggle theme</span>
     </Button>
+    </div>
   );
 } 

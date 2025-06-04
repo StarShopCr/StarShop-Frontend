@@ -1,0 +1,190 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "shop": "Tienda",
+    "cart": "Carrito",
+    "account": "Cuenta",
+    "menu": "Abrir Menú",
+    "closeMenu": "Cerrar Menú",
+    "profile": "Perfil",
+    "dashboard": "Panel",
+    "analytics": "Análisis",
+    "products": "Productos",
+    "transactions": "Transacciones",
+    "invoices": "Facturas",
+    "billing": "Facturación",
+    "chat": "Chat",
+    "supportTickets": "Tickets de Soporte",
+    "faq": "Preguntas Frecuentes",
+    "settings": "Configuración",
+    "help": "Ayuda"
+  },
+  "buttons": {
+    "addToCart": "Añadir al Carrito",
+    "buyNow": "Comprar Ahora",
+    "continueShopping": "Continuar Comprando",
+    "checkout": "Finalizar Compra",
+    "login": "Iniciar Sesión",
+    "signup": "Registrarse",
+    "logout": "Cerrar Sesión",
+    "viewDetails": "Ver Detalles"
+  },
+  "product": {
+    "price": "Precio",
+    "quantity": "Cantidad",
+    "description": "Descripción",
+    "reviews": "Reseñas",
+    "relatedProducts": "Productos Relacionados"
+  },
+  "cart": {
+    "empty": "Tu carrito está vacío",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "shipping": "Envío",
+    "tax": "Impuestos",
+    "checkout": "Pagar"
+  },
+  "account": {
+    "profile": "Perfil",
+    "orders": "Pedidos",
+    "wishlist": "Lista de Deseos",
+    "settings": "Configuración"
+  },
+  "messages": {
+    "addedToCart": "Añadido al carrito",
+    "removedFromCart": "Eliminado del carrito",
+    "error": "Ha ocurrido un error",
+    "success": "Éxito"
+  },
+  "landing": {
+    "title": "Marketplace construido en la blockchain de Stellar",
+    "description": "StarShop permite a las pequeñas empresas vender productos de manera transparente mientras fomenta la confianza. Los clientes reciben NFTs únicos como coleccionables digitales con cada compra, y las empresas ganan NFTs de hitos para mostrar su éxito.",
+    "registerButton": "Registrarse Ahora",
+    "registerAriaLabel": "Registrarse en el marketplace StarShop",
+    "stats": {
+      "sellers": "Vendedores",
+      "products": "Productos de alta calidad",
+      "customers": "Clientes Satisfechos"
+    },
+    "logoAlt": "Logo de StarShop"
+  },
+  "faq": {
+    "description": "Preguntas frecuentes sobre {{category}}",
+    "categories": {
+      "general": "General",
+      "buying": "Compras",
+      "selling": "Ventas",
+      "payments": "Pagos",
+      "nfts": "NFTs",
+      "support": "Soporte"
+    },
+    "general": {
+      "whatIs": {
+        "question": "¿Qué es StarShop Marketplace?",
+        "answer": "StarShop es un marketplace digital donde los usuarios pueden comprar, vender e intercambiar activos digitales, incluyendo NFTs, arte digital y otros bienes virtuales. Nuestra plataforma proporciona una interfaz segura y fácil de usar para todas tus transacciones digitales."
+      },
+      "createAccount": {
+        "question": "¿Cómo creo una cuenta?",
+        "answer": "Para crear una cuenta, haz clic en el botón \"Registrarse\" en la esquina superior derecha de la página principal. Necesitarás proporcionar una dirección de correo electrónico válida, crear una contraseña y verificar tu correo. Una vez verificado, puedes configurar tu perfil y comenzar a explorar el marketplace."
+      },
+      "availability": {
+        "question": "¿StarShop está disponible en todo el mundo?",
+        "answer": "Sí, StarShop está disponible para usuarios de todo el mundo. Sin embargo, ciertas características o métodos de pago pueden tener restricciones regionales debido a requisitos regulatorios. Los usuarios de todos los países pueden navegar, pero los requisitos de verificación pueden variar según la ubicación."
+      },
+      "currencies": {
+        "question": "¿Qué monedas se aceptan en StarShop?",
+        "answer": "StarShop acepta varias criptomonedas incluyendo Ethereum (ETH), Bitcoin (BTC) y Solana (SOL). También admitimos monedas fiduciarias seleccionadas a través de nuestros socios de pago. Las monedas disponibles pueden variar según tu región y la transacción específica."
+      }
+    },
+    "buying": {
+      "howToBuy": {
+        "question": "¿Cómo compro un artículo?",
+        "answer": "Para comprar un artículo, navega a la página del listado, revisa los detalles y haz clic en el botón \"Comprar Ahora\" o \"Pujar\". Sigue el proceso de pago para completar tu compra."
+      },
+      "fees": {
+        "question": "¿Qué tarifas están asociadas con las compras?",
+        "answer": "Los compradores generalmente pagan una tarifa de transacción del 2.5% en todas las compras. También pueden aplicarse tarifas de gas para transacciones con criptomonedas, dependiendo de la red blockchain utilizada."
+      },
+      "cancelPurchase": {
+        "question": "¿Puedo cancelar una compra?",
+        "answer": "Una vez que una compra se confirma en la blockchain, no se puede revertir. Sin embargo, si hay problemas con tu compra, por favor contacta a nuestro equipo de soporte dentro de las 48 horas."
+      },
+      "receiveItems": {
+        "question": "¿Cómo recibo mis artículos comprados?",
+        "answer": "Los artículos digitales se transferirán directamente a tu wallet conectada. Este proceso es automático y generalmente se completa en minutos después de que se confirma la transacción."
+      }
+    },
+    "selling": {
+      "howToSell": {
+        "question": "¿Cómo listo un artículo para vender?",
+        "answer": "Para listar un artículo, haz clic en \"Crear\" o \"Vender\" en la barra de navegación, sube tu activo digital, completa los detalles del listado, establece tu precio y confirma el listado."
+      },
+      "fees": {
+        "question": "¿Qué tarifas están asociadas con las ventas?",
+        "answer": "Los vendedores pagan una tarifa del 3.5% en ventas exitosas. También pueden haber tarifas de gas para crear y cancelar listados, dependiendo de la blockchain."
+      },
+      "listingDuration": {
+        "question": "¿Cuánto tiempo permanecen activos los listados?",
+        "answer": "Los listados estándar permanecen activos hasta que el vendedor los cancele o hasta que se venda el artículo. Los listados tipo subasta tienen una duración establecida especificada por el vendedor."
+      },
+      "editListing": {
+        "question": "¿Puedo editar un listado después de crearlo?",
+        "answer": "Sí, puedes editar ciertos aspectos de tu listado como la descripción y el precio. Sin embargo, cambiar atributos principales puede requerir cancelar y recrear el listado."
+      }
+    },
+    "payments": {
+      "methods": {
+        "question": "¿Qué métodos de pago se aceptan?",
+        "answer": "Aceptamos varias criptomonedas incluyendo ETH, BTC y SOL, así como tarjetas de crédito/débito a través de nuestros procesadores de pago en regiones seleccionadas."
+      },
+      "processingTime": {
+        "question": "¿Cuánto tiempo tardan en procesarse los pagos?",
+        "answer": "Los pagos con criptomonedas generalmente se confirman en minutos, dependiendo de la congestión de la red. Los pagos en moneda fiduciaria pueden tardar 1-3 días hábiles en completar el procesamiento."
+      },
+      "withdrawalLimits": {
+        "question": "¿Hay límites de retiro?",
+        "answer": "Sí, los límites de retiro dependen de tu nivel de verificación de cuenta. Las cuentas verificadas básicas pueden retirar hasta $2,000 por día, mientras que las cuentas completamente verificadas tienen límites más altos."
+      },
+      "taxes": {
+        "question": "¿Cómo se manejan las obligaciones fiscales?",
+        "answer": "StarShop proporciona historial de transacciones para tu referencia, pero los usuarios son responsables de sus propias obligaciones fiscales. Recomendamos consultar con un profesional fiscal para orientación."
+      }
+    },
+    "nfts": {
+      "blockchains": {
+        "question": "¿Qué blockchains soportan para NFTs?",
+        "answer": "Actualmente soportamos las blockchains de Ethereum, Polygon y Solana para transacciones de NFTs. Se pueden agregar cadenas adicionales en el futuro."
+      },
+      "create": {
+        "question": "¿Cómo creo un NFT en StarShop?",
+        "answer": "Para crear un NFT, ve a la sección \"Crear\", sube tu obra de arte, completa los detalles de metadatos, elige tu blockchain y acuña tu NFT. Las tarifas de acuñación varían según la blockchain."
+      },
+      "fileTypes": {
+        "question": "¿Qué tipos de archivos se admiten para NFTs?",
+        "answer": "Soportamos tipos de archivo JPEG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB y GLTF. El tamaño máximo de archivo es de 100MB para la mayoría de los formatos."
+      },
+      "royalties": {
+        "question": "¿Ofrecen regalías de NFT?",
+        "answer": "Sí, los creadores pueden establecer regalías entre 0-10% al acuñar NFTs. Estas regalías se distribuyen automáticamente con cada venta secundaria."
+      }
+    },
+    "support": {
+      "contact": {
+        "question": "¿Cómo contacto al servicio al cliente?",
+        "answer": "Puedes contactar a nuestro equipo de soporte a través del centro de ayuda en tu panel de cuenta, enviando un correo a support@starshop.io, o mediante chat en vivo durante horas laborables."
+      },
+      "hours": {
+        "question": "¿Cuáles son los horarios de soporte?",
+        "answer": "Nuestro equipo de soporte está disponible 24/7 para problemas urgentes. El horario estándar de soporte es de 9AM a 5PM UTC, de lunes a viernes."
+      },
+      "knowledgeBase": {
+        "question": "¿Hay una base de conocimientos?",
+        "answer": "Sí, tenemos una extensa base de conocimientos con tutoriales, guías y FAQs. Puedes acceder a ella a través de la sección de Soporte de nuestro sitio web."
+      },
+      "reportProblem": {
+        "question": "¿Cómo reporto un problema con una compra?",
+        "answer": "Para reportar un problema, ve a tu historial de compras, encuentra la transacción relevante y haz clic en \"Reportar Problema\". Por favor, proporciona tantos detalles como sea posible para ayudarnos a resolver tu problema rápidamente."
+      }
+    }
+  }
+} 
