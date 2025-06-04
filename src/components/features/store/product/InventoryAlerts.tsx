@@ -26,7 +26,7 @@ export const InventoryAlerts = () => {
             </div>
           </div>
           <div>
-            <button className="py-2 dark:bg-[#0E0E1B] bg-black border border-[rgba(245,158,11,.2)]  text-[0.852rem] font-medium dark:text-[#FBBF24] text-black rounded-md w-full">
+            <button className="py-2 dark:bg-[#0E0E1B] bg-black border border-[rgba(245,158,11,.2)]  text-[0.852rem] font-medium text-[#FBBF24] rounded-md w-full">
               Restock Items
             </button>
           </div>

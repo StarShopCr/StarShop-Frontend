@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useLayoutEffect, useState } from "react";
 
 type Theme = "light" | "dark" | "system";
 
@@ -40,7 +40,7 @@ export function ThemeProvider({
   const [theme, setTheme] = useState<Theme>(defaultTheme);
   const [actualTheme, setActualTheme] = useState<"light" | "dark">("dark");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Get theme from localStorage or use system preference
     const storedTheme = localStorage.getItem(storageKey) as Theme | null;
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches

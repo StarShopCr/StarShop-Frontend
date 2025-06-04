@@ -20,9 +20,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('starshop-theme') || 'dark';
+                  var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  var actualTheme = theme === 'system' ? systemTheme : theme;
+                  document.documentElement.className = actualTheme;
+                } catch (e) {
+                  // Keep the default 'dark' class if there's an error
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className="overflow-x-hidden bg-background text-foreground dark:bg-starshopBackground">
-        <ThemeProvider defaultTheme="system" storageKey="starshop-theme">
+        <ThemeProvider defaultTheme="dark" storageKey="starshop-theme">
           <AuthProvider>
             <div className="flex flex-col lg:flex-row min-h-screen w-full">
               <ClientSidebar />
