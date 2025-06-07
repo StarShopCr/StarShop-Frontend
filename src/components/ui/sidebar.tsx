@@ -72,13 +72,13 @@ export const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
-    return pathname === path ? "bg-purple-600" : "hover:bg-gray-800";
+    return pathname === path ? "bg-purple-600 text-white" : "hover:bg-muted text-muted-foreground hover:text-foreground";
   };
 
   const NavLink: FC<NavItem> = ({ title, path, icon: Icon }) => (
-    <Link href={path} className={`flex items-center space-x-3 p-2 rounded-lg ${isActive(path)}`}>
+    <Link href={path} className={`flex items-center space-x-3 p-2 rounded-lg transition-colors ${isActive(path)}`}>
       <Icon className="w-6 h-6" />
-      <span className={`text-[12px] ${pathname === path ? '' : 'text-white/60'}`}>{title}</span>
+      <span className="text-[12px]">{title}</span>
     </Link>
   );
 
@@ -86,7 +86,7 @@ export const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
     <>
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+          className="fixed inset-0 z-30 bg-black bg-opacity-50 lg:hidden"
           onClick={onClose}
         />
       )}
@@ -97,14 +97,15 @@ export const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         z-40 overflow-y-auto max-h-screen
-        bg-[#0b0c1b] text-white p-2 flex flex-col
+        bg-card text-white p-2 flex flex-col
       `}>
+
         <div className="flex-1">
           <div className="flex justify-center mb-2">
             <Image src="/starshop-logos/starshop-logo.svg" alt="StarShop Logo" width={60} height={60} className="mb-1" />
           </div>
 
-          <div className="my-2 border-t border-gray-700/30 -mx-6"></div>
+          <div className="my-2 -mx-6 border-t border-gray-700/30"></div>
           
           {navSections.map((section, index) => (
             <div key={index} className="mb-2">
@@ -119,7 +120,7 @@ export const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
         </div>
 
         <div>
-          <div className="my-2 border-t border-gray-700/30 -mx-6"></div>
+          <div className="my-2 -mx-6 border-t border-gray-700/30"></div>
           <nav className="space-y-3">
             {bottomNavItems.map((item, index) => (
               <NavLink key={index} {...item} />
