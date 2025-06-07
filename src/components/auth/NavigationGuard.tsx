@@ -9,7 +9,7 @@ interface NavigationGuardProps {
   children: React.ReactNode;
 }
 
-const publicPaths = ["/auth/login", "/", "/register", "/auth/register"];
+const publicPaths = ["/auth/login", "/", "/register", "/auth/register", "/unauthorized"];
 
 export default function NavigationGuard({ children }: NavigationGuardProps) {
   const { isAuthenticated } = useAuth();
