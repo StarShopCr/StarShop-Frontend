@@ -85,7 +85,7 @@ export const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
   return (
     <>
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-30 bg-black bg-opacity-50 lg:hidden"
           onClick={onClose}
         />
@@ -97,7 +97,9 @@ export const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         z-40 overflow-y-auto max-h-screen
-        bg-card text-white p-2 flex flex-col
+        bg-background dark:bg-[#0F0E1D] text-white p-2 flex flex-col
+        overflow-x-hidden
+        border-r border-gray-700/30
       `}>
 
         <div className="flex-1">
@@ -106,7 +108,7 @@ export const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
           </div>
 
           <div className="my-2 -mx-6 border-t border-gray-700/30"></div>
-          
+
           {navSections.map((section, index) => (
             <div key={index} className="mb-2">
               <h2 className="text-[12px] font-semibold mb-4">{section.title}</h2>

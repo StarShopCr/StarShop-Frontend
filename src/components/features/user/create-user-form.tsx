@@ -21,7 +21,7 @@ export default function CreateUserForm() {
   }
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden bg-starshopBackground">
+    <div className="min-h-screen bg-background dark:bg-[#0F0E1D] relative overflow-hidden bg-starshopBackground">
       {/* Main content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4">
         <Image
@@ -45,33 +45,33 @@ export default function CreateUserForm() {
               <label htmlFor="email" className="text-sm text-white">
                 Email
               </label>
-             {/* <Input */}
+              {/* <Input */}
             </div>
 
             <div className="space-y-2">
               <label htmlFor="username" className="text-sm text-white">
                 Username
               </label>
-               {/* <Input */}
-            
+              {/* <Input */}
+
             </div>
 
             <div className="space-y-2">
               <label htmlFor="password" className="text-sm text-white">
                 Password
               </label>
-               {/* <Input */}
+              {/* <Input */}
             </div>
 
-           
+
             <Button
-            variant="light"
-            size="lg"
-            onClick={handleSubmit}
-          >
-            
-            Create Account
-          </Button>
+              variant="light"
+              size="lg"
+              onClick={handleSubmit}
+            >
+
+              Create Account
+            </Button>
           </form>
 
           <p className="text-center text-muted mt-3">

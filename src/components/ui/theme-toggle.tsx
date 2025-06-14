@@ -13,40 +13,38 @@ export function ThemeToggle() {
 
   return (
     <div className="fixed z-50 top-3 right-32">
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={toggleTheme}
-      className="p-0 h-9 w-9 hover:bg-white/10 dark:hover:bg-white/10"
-      aria-label={`Switch to ${actualTheme === "light" ? "dark" : "light"} mode`}
-      style={{
-        transition: 'background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out'
-      }}
-    >
-      <div className="relative overflow-hidden">
-        <Sun 
-          className={`h-[1.2rem] w-[1.2rem] ${
-            actualTheme === "dark" 
-              ? "rotate-90 scale-0 opacity-0" 
-              : "rotate-0 scale-100 opacity-100"
-          }`}
-          style={{
-            transition: 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out'
-          }}
-        />
-        <Moon 
-          className={`absolute inset-0 h-[1.2rem] w-[1.2rem] ${
-            actualTheme === "dark" 
-              ? "rotate-0 scale-100 opacity-100" 
-              : "-rotate-90 scale-0 opacity-0"
-          }`}
-          style={{
-            transition: 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out'
-          }}
-        />
-      </div>
-      <span className="sr-only">Toggle theme</span>
-    </Button>
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={toggleTheme}
+        className="p-0 h-9 w-9 hover:bg-white/10 dark:hover:bg-white/10"
+        aria-label={`Switch to ${actualTheme === "light" ? "dark" : "light"} mode`}
+        style={{
+          transition: 'background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out'
+        }}
+      >
+        <div className="relative overflow-hidden">
+          <Sun
+            className={`h-[1.2rem] w-[1.2rem] ${actualTheme === "dark"
+                ? "rotate-90 scale-0 opacity-0"
+                : "rotate-0 scale-100 opacity-100"
+              }`}
+            style={{
+              transition: 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out'
+            }}
+          />
+          <Moon
+            className={`absolute inset-0 h-[1.2rem] w-[1.2rem] ${actualTheme === "dark"
+                ? "rotate-0 scale-100 opacity-100"
+                : "-rotate-90 scale-0 opacity-0"
+              }`}
+            style={{
+              transition: 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out'
+            }}
+          />
+        </div>
+        <span className="sr-only">Toggle theme</span>
+      </Button>
     </div>
   );
 } 

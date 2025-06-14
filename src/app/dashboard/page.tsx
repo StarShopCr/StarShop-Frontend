@@ -83,7 +83,7 @@ export default function Dashboard() {
         {statsCards.map((card, index) => (
           <div
             key={index}
-            className="p-6 rounded-lg border dark:border-white/10 border-black/10 bg-background shadow-[0_0_8px_rgba(255,255,255,0.1)] dark:hover:shadow-[0_0_12px_rgba(255,255,255,0.2)] transition-shadow hover:shadow-[0_0_12px_rgba(0,0,0,0.2)]"
+            className="p-6 rounded-lg border dark:border-white/10 border-black/20 bg-background dark:bg-[#0F0E1D] shadow-[0_0_8px_rgba(255,255,255,0.1)] dark:hover:shadow-[0_0_12px_rgba(255,255,255,0.2)] transition-shadow hover:shadow-[0_0_12px_rgba(0,0,0,0.2)]"
           >
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-gray-400 font-medium">{card.title}</h2>
@@ -93,22 +93,19 @@ export default function Dashboard() {
               <div>
                 <p className="text-2xl font-bold dark:text-white">{card.value}</p>
                 <p
-                  className={`text-sm font-medium ${
-                    card.trend === "up" ? "text-green-500" : "text-red-500"
-                  }`}
+                  className={`text-sm font-medium ${card.trend === "up" ? "text-green-500" : "text-red-500"
+                    }`}
                 >
                   {card.change} from last month
                 </p>
               </div>
               <div
-                className={`p-2 rounded-full ${
-                  card.trend === "up" ? "bg-green-500/20" : "bg-red-500/20"
-                }`}
+                className={`p-2 rounded-full ${card.trend === "up" ? "bg-green-500/20" : "bg-red-500/20"
+                  }`}
               >
                 <TrendingUp
-                  className={`w-4 h-4 ${
-                    card.trend === "up" ? "text-green-500" : "text-red-500"
-                  }`}
+                  className={`w-4 h-4 ${card.trend === "up" ? "text-green-500" : "text-red-500"
+                    }`}
                 />
               </div>
             </div>
@@ -119,7 +116,7 @@ export default function Dashboard() {
       {/* Charts and events section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Chart area */}
-        <div className="lg:col-span-2 p-6 rounded-lg border dark:border-white/10 border-black/10 bg-background shadow-[0_0_8px_rgba(255,255,255,0.1)]">
+        <div className="lg:col-span-2 p-6 rounded-lg border dark:border-white/10 border-black/20 bg-background dark:bg-[#0F0E1D] shadow-[0_0_8px_rgba(255,255,255,0.1)]">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold dark:text-white">
               Sales Performance
@@ -145,7 +142,7 @@ export default function Dashboard() {
         </div>
 
         {/* Events card */}
-          <div className="p-6 rounded-lg border dark:border-white/10 border-black/10 bg-background shadow-[0_0_8px_rgba(255,255,255,0.1)]">
+        <div className="p-6 rounded-lg border dark:border-white/10 border-black/20 bg-background dark:bg-[#0F0E1D] shadow-[0_0_8px_rgba(255,255,255,0.1)]">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold dark:text-white">
               Upcoming Events

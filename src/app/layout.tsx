@@ -41,7 +41,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="overflow-x-hidden bg-background text-foreground dark:bg-starshopBackground">
+      <body className="overflow-x-hidden bg-background dark:bg-[#0F0E1D] text-foreground dark:bg-starshopBackground">
         <ThemeProvider defaultTheme="dark" storageKey="starshop-theme">
           <AuthProvider>
             <I18nProvider>
@@ -49,7 +49,7 @@ export default function RootLayout({
                 <SidebarConditional />
                 <main className="flex-1 overflow-y-auto">
                   <LanguageSwitcherWrapper />
-                    <ThemeToggle />
+                  <ThemeToggle />
                   <NavigationGuard>
                     <ReactQueryProvider>{children}</ReactQueryProvider>
                   </NavigationGuard>
