@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -37,10 +36,11 @@ export const ClientSidebar: React.FC = () => {
     <>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-gray-800 rounded-md"
-        aria-label={t('navigation.menu')}
+        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-card border border-border rounded-md hover:bg-muted transition-colors"
+          aria-label={t('navigation.menu')}
       >
-        {isOpen ? <X size={24} /> : <Menu size={24} />}
+
+          {isOpen ? <X size={24} /> : <Menu size={24}  className="w-6 h-6 text-foreground" />}
       </button>
       <Sidebar isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>

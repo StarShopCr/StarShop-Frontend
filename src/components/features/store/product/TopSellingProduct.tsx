@@ -4,10 +4,10 @@ import { ArrowRight } from "lucide-react";
 import { TopSellingProductProps } from "./types";
 export const TopSellingProduct = () => {
   return (
-    <div className="bg-[#13111E] border border-[rgba(255,255,255,0.1)] rounded-xl lg:px-6 px-4 py-6">
+    <div className="dark:bg-[#13111E] border border-black/20 dark:border-[rgba(255,255,255,0.1)] rounded-xl lg:px-6 px-4 py-6">
       <div className="pt-6 lg:px-6 px-4 pb-2 space-y-2">
-        <h2 className="text-lg font-semibold">Top Selling Products</h2>
-        <p className="text-[#a1a0a5] text-sm mb-4">
+        <h2 className="text-lg font-semibold dark:text-white text-black">Top Selling Products</h2>
+        <p className="text-[#a1a0a5] text-sm mb-4 dark:text-white text-black">
           Best performers this month
         </p>
       </div>
@@ -38,15 +38,15 @@ const TopSellingProductCard: FC<TopSellingProductProps> = ({
   growthPercentage,
 }) => {
   return (
-    <div className="p-3 flex gap-4 justify-between items-center bg-white/5 rounded-lg">
+    <div className="p-3 flex gap-4 justify-between items-center dark:bg-white/5 bg-black/5 rounded-lg">
       <div className="flex gap-4">
-        <div className="bg-[#EAEAEA] size-10  rounded-[6px]"></div>
+        <div className="dark:bg-[#EAEAEA] bg-black size-10  rounded-[6px]"></div>
         <div>
-          <p className="text-[0.97rem] font-medium leading-6">
+          <p className="text-[0.97rem] dark:text-white text-black font-medium leading-6">
             {name} ({color})
           </p>
           <div>
-            <p className="font-normal leading-5 text-white/60 text-[0.84rem]">
+            <p className="font-normal leading-5 dark:text-white/60 text-black text-[0.84rem]">
               {sold} sold • {inStock} {revenue}
             </p>
           </div>
