@@ -19,7 +19,7 @@ const RewardNFTCollection: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between mb-6 gap-4">
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between mb-6 gap-4" >
         <SearchBar searchTerm={searchTerm} onSearchChange={(e) => setSearchTerm(e.target.value)} />
         <div className="flex space-x-2">
           <button

@@ -11,9 +11,10 @@ export default function NFTRewardsPage() {
   return (
     <main className="p-6">
       <NFTCollectionOverview />
-      <ExclusiveNFTRewards />
-      <ValuableNFTCollection />
       <RewardNFTCollection />
+      <ValuableNFTCollection />
+      <ExclusiveNFTRewards />
+
     </main>
   )
 }
