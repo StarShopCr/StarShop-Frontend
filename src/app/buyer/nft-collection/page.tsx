@@ -1,9 +1,19 @@
-import ExclusiveNFTRewards from "@/components/features/user/nfts/components/ExclusiveNFTRewards";
+"use client"
+
+import { 
+  NFTCollectionOverview, 
+  ExclusiveNFTRewards, 
+  ValuableNFTCollection, 
+  RewardNFTCollection 
+} from "@/features/buyer/nfts-collection"
 
 export default function NFTRewardsPage() {
   return (
     <main className="p-6">
+      <NFTCollectionOverview />
       <ExclusiveNFTRewards />
+      <ValuableNFTCollection />
+      <RewardNFTCollection />
     </main>
-  );
+  )
 }

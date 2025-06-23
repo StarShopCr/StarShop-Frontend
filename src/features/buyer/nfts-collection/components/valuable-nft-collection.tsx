@@ -1,52 +1,20 @@
-"use client";
-import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+"use client"
 
-const nfts = [
-  {
-    id: 1,
-    title: "Early Adopter",
-    subtitle: "Special Edition",
-    price: "~500 XLM",
-    rarity: "Legendary",
-    rarityColor: "bg-amber-100 text-amber-800",
-  },
-  {
-    id: 2,
-    title: "Fashion Pioneer",
-    subtitle: "Achievement",
-    price: "~350 XLM",
-    rarity: "Epic",
-    rarityColor: "bg-purple-100 text-purple-800",
-  },
-  {
-    id: 3,
-    title: "Limited Collection #1",
-    subtitle: "Exclusive",
-    price: "~200 XLM",
-    rarity: "Rare",
-    rarityColor: "bg-blue-100 text-blue-800",
-  },
-  {
-    id: 4,
-    title: "Designer Collaboration",
-    subtitle: "Exclusive",
-    price: "~450 XLM",
-    rarity: "Epic",
-    rarityColor: "bg-purple-100 text-purple-800",
-  },
-];
+import { ArrowUpRight } from "lucide-react"
+import Link from "next/link"
+import { mockValuableNFTs } from "../constants/mock-data"
 
 const ValuableNFTCollection: React.FC = () => {
   return (
-    <section className="text-white w-full"
-    style={{
-      backgroundImage: "url('/background-image-starshop.png')",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-    }}>
+    <section 
+      className="text-white w-full"
+      style={{
+        backgroundImage: "url('/background-image-starshop.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="mx-[100px] flex flex-col">
         {/* Heading Section */}
         <div className="my-4 md:my-2 sm:my-0">
@@ -58,14 +26,14 @@ const ValuableNFTCollection: React.FC = () => {
 
         {/* NFT Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full py-5 rounded-lg">
-          {nfts.map((nft) => (
-            <div key={nft.id} className="overflow-hidden rounded-lg border/0 ">
+          {mockValuableNFTs.map((nft) => (
+            <div key={nft.id} className="overflow-hidden rounded-lg border/0">
               <div className="relative h-40 bg-gray-200">
                 <span className={`absolute top-2 right-2 px-3 py-1 rounded-full text-xs font-medium ${nft.rarityColor}`}>
                   {nft.rarity}
                 </span>
               </div>
-              <div className="p-4 bg-white bg-opacity-10  rounded-b-lg">
+              <div className="p-4 bg-white bg-opacity-10 rounded-b-lg">
                 <h3 className="font-semibold text-white">{nft.title}</h3>
                 <p className="text-sm text-gray-400">{nft.subtitle}</p>
                 <div className="flex justify-between items-center mt-4">
@@ -93,7 +61,7 @@ const ValuableNFTCollection: React.FC = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ValuableNFTCollection;
+export default ValuableNFTCollection 

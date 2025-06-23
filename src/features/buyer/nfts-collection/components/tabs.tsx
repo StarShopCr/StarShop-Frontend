@@ -1,15 +1,6 @@
-import React from "react";
+"use client"
 
-interface Tab {
-  label: string;
-  value: string;
-}
-
-interface TabsProps {
-  tabs: Tab[];
-  activeTab: string;
-  onTabChange: (value: string) => void;
-}
+import { TabsProps } from "../types/nft"
 
 const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onTabChange }) => (
   <div className="w-full mb-6 bg-white bg-opacity-10 rounded-[8px] p-1">
@@ -30,6 +21,6 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onTabChange }) => (
       ))}
     </div>
   </div>
-);
+)
 
-export default Tabs;
+export default Tabs 

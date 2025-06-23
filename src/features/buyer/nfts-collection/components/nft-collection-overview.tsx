@@ -1,8 +1,6 @@
-// pages/nft-collection.tsx
-import React, { useState } from "react";
+"use client"
 
-import StatsCard from "./StatsCard ";
-
+import { useState } from "react"
 import { 
   Diamond, 
   Shirt, 
@@ -12,65 +10,24 @@ import {
   ArrowLeft, 
   Filter,
   LayoutGrid,
-   List,
-   Gem
-} from "lucide-react";
+  List,
+  Gem
+} from "lucide-react"
+import { mockNFTItems, mockNFTStats } from "../constants/mock-data"
+import StatsCard from "./stats-card"
 
+const NFTCollectionOverview: React.FC = () => {
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
+  const [searchTerm, setSearchTerm] = useState("")
 
-interface NFTItem {
-  id: string;
-  name: string;
-  type: "clothing" | "coupon" | "other";
-  imageUrl: string;
-  rarity: string;
-}
+  const filteredItems = mockNFTItems.filter((item) =>
+    (item.name || "").toLowerCase().includes(searchTerm.toLowerCase())
+  )
 
-const NFTCollection: React.FC = () => {
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [searchTerm, setSearchTerm] = useState("");
-
- 
-  const nftItems: NFTItem[] = [
-    {
-      id: "1",
-      name: "Cosmic Hoodie",
-      type: "clothing",
-      imageUrl: "/nft-hoodie.png",
-      rarity: "Rare",
-    },
-    {
-      id: "2",
-      name: "Galaxy Shirt",
-      type: "clothing",
-      imageUrl: "/nft-shirt.png",
-      rarity: "Common",
-    },
-    {
-      id: "3",
-      name: "50% Off Coupon",
-      type: "coupon",
-      imageUrl: "/nft-coupon.png",
-      rarity: "Epic",
-    },
-  ];
-
-  const filteredItems = nftItems.filter((item) =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const totalNFTs = nftItems.length;
-  const clothingRewards = nftItems.filter(
-    (item) => item.type === "clothing"
-  ).length;
-  const redeemableCoupons = nftItems.filter(
-    (item) => item.type === "coupon"
-  ).length;
-  const estimatedValue = 450; 
+  const { totalNFTs, clothingRewards, redeemableCoupons, estimatedValue } = mockNFTStats
 
   return (
-    <div className=" text-white">
-     
-
+    <div className="text-white">
       <div className="container mx-auto px-4 py-6">
         {/* Header */}
         <div className="flex items-center mb-6">
@@ -83,7 +40,7 @@ const NFTCollection: React.FC = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <StatsCard
-            icon={<Gem size={24}  strokeWidth={1.5} className="w-5 h-5 text-purple-400" />}
+            icon={<Gem size={24} strokeWidth={1.5} className="w-5 h-5 text-purple-400" />}
             title="Total NFTs"
             value={`${totalNFTs}`}
             bgColor="bg-[#1a1b1e]/30"
@@ -101,9 +58,7 @@ const NFTCollection: React.FC = () => {
             bgColor="bg-[#1a1b1e]/30"
           />
           <StatsCard
-            icon={
-              <Calculator className="w-5 h-5 text-green-400" />
-            }
+            icon={<Calculator className="w-5 h-5 text-green-400" />}
             title="Estimated Value"
             value={`${estimatedValue} XLM`}
             bgColor="bg-[#1a1b1e]/30"
@@ -116,7 +71,7 @@ const NFTCollection: React.FC = () => {
             <input
               type="text"
               placeholder="Search NFTs..."
-              className="w-full bg-[#1a1b1e]/30 border border-gray-700 rounded-lg px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full bg-[#1a1b1e]/30 border border-gray-700 rounded-lg px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -153,22 +108,17 @@ const NFTCollection: React.FC = () => {
               }`}
               onClick={() => setViewMode("list")}
             >
-              <List
-               className="w-6 h-6" />
+              <List className="w-6 h-6" />
             </button>
-            <button className="flex items-center  space-x-2 border  border-gray-400 border-1 px-4 py-2 rounded-lg">
+            <button className="flex items-center space-x-2 border border-gray-400 border-1 px-4 py-2 rounded-lg">
               <Filter className="w-4 h-4" />
               <span>Filter</span>
             </button>
           </div>
         </div>
-
       </div>
     </div>
-  );
-};
+  )
+}
 
-
-
-
-export default NFTCollection;
+export default NFTCollectionOverview 

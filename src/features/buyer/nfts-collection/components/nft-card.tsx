@@ -1,22 +1,8 @@
-import React from "react";
-import Link from "next/link";
-import { Info, ExternalLink } from "lucide-react";
+"use client"
 
-export interface NFTItem {
-  id: number;
-  title: string;
-  subtitle: string;
-  subtitleColor?: string;
-  store: string;
-  acquired: string;
-  rarity: string;
-  rarityColor: string;
-  category: "Clothing Rewards" | "Achievements" | "Exclusive Items" | "Other";
-}
-
-interface NFTCardProps {
-  nft: NFTItem;
-}
+import Link from "next/link"
+import { Info, ExternalLink } from "lucide-react"
+import { NFTCardProps } from "../types/nft"
 
 const NFTCard: React.FC<NFTCardProps> = ({ nft }) => (
   <div className="overflow-hidden rounded-lg bg-white bg-opacity-10">
@@ -28,14 +14,16 @@ const NFTCard: React.FC<NFTCardProps> = ({ nft }) => (
     </div>
     {/* Details */}
     <div className="p-4">
-      <h3 className="font-semibold text-white">{nft.title}</h3>
-      <p className="text-sm text-gray-300 mt-2">
-        <span className={`px-3 py-1 rounded-full text-xs font-medium ${nft.subtitleColor}`}>
-          {nft.subtitle}
-        </span>
-      </p>
-      <p className="text-sm text-gray-400 mt-2">{nft.store}</p>
-      <p className="text-sm text-gray-400 mt-2">Acquired: {nft.acquired}</p>
+      <h3 className="font-semibold text-white">{nft.title || nft.name}</h3>
+      {nft.subtitle && (
+        <p className="text-sm text-gray-300 mt-2">
+          <span className={`px-3 py-1 rounded-full text-xs font-medium ${nft.subtitleColor}`}>
+            {nft.subtitle}
+          </span>
+        </p>
+      )}
+      {nft.store && <p className="text-sm text-gray-400 mt-2">{nft.store}</p>}
+      {nft.acquired && <p className="text-sm text-gray-400 mt-2">Acquired: {nft.acquired}</p>}
       {/* Action buttons */}
       <div className="flex gap-2 mt-4 justify-between">
         <Link href="/">
@@ -53,6 +41,6 @@ const NFTCard: React.FC<NFTCardProps> = ({ nft }) => (
       </div>
     </div>
   </div>
-);
+)
 
-export default NFTCard;
+export default NFTCard 

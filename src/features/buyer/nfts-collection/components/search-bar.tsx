@@ -1,16 +1,13 @@
-import React from "react";
+"use client"
 
-interface SearchBarProps {
-  searchTerm: string;
-  onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import { SearchBarProps } from "../types/nft"
 
 const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, onSearchChange }) => (
   <div className="relative flex-1 max-w-lg">
     <input
       type="text"
       placeholder="Search NFTs..."
-      className="w-full bg-[#1a1b1e]/30 border border-gray-700 rounded-lg px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-purple-500"
+      className="w-full bg-[#1a1b1e]/30 border border-gray-700 rounded-lg px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
       value={searchTerm}
       onChange={onSearchChange}
     />
@@ -31,6 +28,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, onSearchChange }) => 
       </svg>
     </div>
   </div>
-);
+)
 
-export default SearchBar;
+export default SearchBar 

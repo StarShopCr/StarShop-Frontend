@@ -1,15 +1,14 @@
-"use client";
+"use client"
 
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { NFTRewardCard } from "@/components/features/user/nfts/components/NFTRewardCard";
-import { ShoppingBag, Gift } from "lucide-react";
+import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { ShoppingBag, Gift } from "lucide-react"
+import NFTRewardCard from "./nft-reward-card"
 
-export default function ExclusiveNFTRewards() {
+const ExclusiveNFTRewards: React.FC = () => {
   return (
     <div className="max-w-5xl mx-auto px-4 md:scale-[0.92] rounded-2xl border border-white/60 p-[2px] shadow-[0_0_16px_rgba(255,255,255,0.25)] bg-transparent">
       <section className="p-4 sm:p-6 space-y-6">
-        
         <div className="text-left space-y-2">
           <h2 className="text-2xl font-bold text-white">
             Exclusive NFT Rewards
@@ -20,7 +19,6 @@ export default function ExclusiveNFTRewards() {
           </p>
         </div>
 
-        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* 🟣 Purchase Rewards */}
           <Card className="bg-muted/5 p-5 space-y-4 border-none shadow-none">
@@ -45,7 +43,6 @@ export default function ExclusiveNFTRewards() {
             </Button>
           </Card>
 
-          
           <Card className="bg-muted/5 p-5 space-y-4 border-none shadow-none">
             <div className="flex items-center gap-2">
               <Gift className="h-5 w-5 text-[#3b82f6]" />
@@ -60,7 +57,6 @@ export default function ExclusiveNFTRewards() {
             </p>
 
             <div className="space-y-3">
-              
               <div className="border border-dashed border-muted-foreground/20 rounded-xl p-5 space-y-2">
                 <div className="flex justify-between items-start">
                   <div>
@@ -86,7 +82,6 @@ export default function ExclusiveNFTRewards() {
                 </div>
               </div>
 
-              
               <div className="border border-dashed border-muted-foreground/20 rounded-xl p-5 space-y-2">
                 <div className="flex justify-between items-start">
                   <div>
@@ -123,5 +118,7 @@ export default function ExclusiveNFTRewards() {
         </div>
       </section>
     </div>
-  );
+  )
 }
+
+export default ExclusiveNFTRewards 

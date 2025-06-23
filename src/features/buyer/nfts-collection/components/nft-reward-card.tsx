@@ -1,10 +1,8 @@
+"use client"
 
-type Props = {
-  name: string;
-  value: string;
-};
+import { NFTRewardCardProps } from "../types/nft"
 
-export function NFTRewardCard({ name, value }: Props) {
+const NFTRewardCard: React.FC<NFTRewardCardProps> = ({ name, value }) => {
   return (
     <div className="bg-muted/15 text-white px-3 py-3 rounded-xl shadow-md space-y-2">
       <div className="bg-background h-20 rounded-md shadow-inner" />
@@ -13,5 +11,7 @@ export function NFTRewardCard({ name, value }: Props) {
         <p className="text-[11px] text-[#a259ff]">~{value} XLM</p>
       </div>
     </div>
-  );
+  )
 }
+
+export default NFTRewardCard 
