@@ -1,26 +1,13 @@
-import { Calendar, Clock } from 'lucide-react';
+"use client"
 
-interface DeliveryCalendarProps {
-  type: string;
-  date: string;
-}
+import { Calendar, Clock } from "lucide-react"
+import { DeliveryCalendarProps } from "../types/user"
+import { getDeliveryIconAndColor } from "../constants/status-colors"
 
-const DeliveryCalendar = ({ 
-  type,
-  date,
-}: DeliveryCalendarProps) => {
-  const getIconAndColor = () => {
-    switch (type.toLowerCase()) {
-      case 'package arriving':
-        return { icon: Calendar, color: 'blue' };
-      case 'expected delivery':
-        return { icon: Clock, color: 'green' };
-      default:
-        return { icon: Calendar, color: 'blue' };
-    }
-  };
-
-  const { icon: Icon, color } = getIconAndColor();
+const DeliveryCalendar: React.FC<DeliveryCalendarProps> = ({ type, date }) => {
+  const { icon: iconName, color } = getDeliveryIconAndColor(type)
+  
+  const Icon = iconName === 'Clock' ? Clock : Calendar
 
   return (
     <div className="flex items-center p-4 rounded-lg bg-[#1a1b1e]/30">
@@ -39,7 +26,7 @@ const DeliveryCalendar = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DeliveryCalendar; 
+export default DeliveryCalendar 

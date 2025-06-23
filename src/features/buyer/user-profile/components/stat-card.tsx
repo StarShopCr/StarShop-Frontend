@@ -1,14 +1,8 @@
-import { LucideIcon } from 'lucide-react';
+"use client"
 
-interface StatCardProps {
-  icon: LucideIcon;
-  value: number;
-  label: string;
-  description: string;
-  color: string;
-}
+import { StatCardProps } from "../types/user"
 
-const StatCard = ({ icon: Icon, value, label, description, color }: StatCardProps) => (
+const StatCard: React.FC<StatCardProps> = ({ icon: Icon, value, label, description, color }) => (
   <div className="flex items-center p-4 rounded-lg bg-[#1a1b1e]/30">
     <div className={`flex items-center justify-center w-10 h-10 rounded-lg bg-${color}-900/30`}>
       <Icon className={`text-${color}-400 w-5 h-5`} />
@@ -25,6 +19,6 @@ const StatCard = ({ icon: Icon, value, label, description, color }: StatCardProp
       </p>
     </div>
   </div>
-);
+)
 
-export default StatCard; 
+export default StatCard 

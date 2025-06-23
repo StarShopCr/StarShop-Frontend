@@ -1,5 +1,7 @@
-import UserProfile from '@/components/features/user/profile/UserProfile';
+"use client"
+
+import { UserProfile } from "@/features/buyer/user-profile"
 
 export default function UserProfilePage() {
-  return <UserProfile />;
+  return <UserProfile />
 } 

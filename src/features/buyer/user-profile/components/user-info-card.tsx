@@ -1,15 +1,10 @@
-'use client';
+"use client"
 
-import Image from 'next/image';
-import { Mail } from 'lucide-react';
+import Image from "next/image"
+import { Mail } from "lucide-react"
+import { UserInfoCardProps } from "../types/user"
 
-interface UserInfoCardProps {
-  name: string;
-  membershipType: string;
-  avatar: string;
-}
-
-const UserInfoCard = ({ name, membershipType, avatar }: UserInfoCardProps) => {
+const UserInfoCard: React.FC<UserInfoCardProps> = ({ name, membershipType, avatar }) => {
   return (
     <div className="text-center">
       <div className="relative inline-block">
@@ -27,7 +22,7 @@ const UserInfoCard = ({ name, membershipType, avatar }: UserInfoCardProps) => {
         <Mail className="w-5 h-5" />
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default UserInfoCard; 
+export default UserInfoCard 
