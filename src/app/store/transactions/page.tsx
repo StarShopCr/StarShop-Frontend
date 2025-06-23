@@ -1,10 +1,11 @@
 "use client"
-import Transactions from "@/components/features/user/transactions/Transaction";
+
+import { Transactions } from "@/features/store/transactions"
 
 export default function TransactionsPage() {
   return (
     <>
       <Transactions />
     </>
-  );
+  )
 }

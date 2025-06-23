@@ -1,18 +1,11 @@
-import { ArrowDownLeft, ArrowUpRight } from "lucide-react";
+"use client"
 
-interface TransactionItemProps {
-  id: string;
-  title: string;
-  date: string;
-  amount: number;
-  status: string;
-  type: "income" | "expense";
-}
+import { ArrowDownLeft, ArrowUpRight } from "lucide-react"
+import { TransactionItemProps } from "../types/transaction"
 
-const TransactionItem = ({ title, date, id, amount, status, type }: TransactionItemProps) => {
+const TransactionItem: React.FC<TransactionItemProps> = ({ title, date, id, amount, status, type }) => {
   return (
     <div className="flex items-center bg-gray-800/50 p-4 rounded-lg">
-
       <div
         className={`flex items-center justify-center w-10 h-10 rounded-lg ${
           type === "income" ? "bg-green-900/30" : "bg-red-900/30"
@@ -37,7 +30,7 @@ const TransactionItem = ({ title, date, id, amount, status, type }: TransactionI
         <p className="text-sm text-gray-400">{status}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TransactionItem;
+export default TransactionItem 
