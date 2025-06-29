@@ -14,7 +14,8 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*", "./public/*"]
+      "@/*": ["./src/*", "./public/*"],
+      "@/shared/*": ["./src/shared/*"]
     },
     "plugins": [
       {
