@@ -19,7 +19,7 @@ export default function EmptyTicketState() {
           details and respond to customer inquiries.
         </p>
 
-        <Button className="bg-[#a855f7] hover:bg-[#9333ea] text-white mt-5 h-9 px-4 text-sm">
+        <Button className="bg-[#a855f7] hover:bg-[#9333ea] text-white mt-5 h-9 px-4 text-sm whitespace-nowrap">
           <Plus className="w-4 h-4 mr-2" />
           Create New Ticket
         </Button>

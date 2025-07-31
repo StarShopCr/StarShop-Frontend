@@ -25,7 +25,7 @@ const navigation = [
   { name: 'Invoices', href: '/seller/invoices', icon: FileText },
   { name: 'Billing', href: '/seller/billing', icon: DollarSign },
   { name: 'Chat', href: '/seller/chat', icon: MessageCircle },
-  { name: 'Support Tickets', href: '/seller/tickets', icon: HelpCircle },
+  { name: 'Support Tickets', href: '/seller/support-tickets', icon: HelpCircle },
   { name: 'FAQ', href: '/seller/faq', icon: HelpCircle },
 ];
 
