@@ -6,7 +6,7 @@ export function FeaturesShowcase() {
   return (
     <section className="relative overflow-hidden">
       <div className="container mx-auto px-6 py-8">
-        <FeaturesHeader 
+        <FeaturesHeader
           badge={FEATURES_HEADER.badge}
           title={FEATURES_HEADER.title}
           description={FEATURES_HEADER.description}
