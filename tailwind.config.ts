@@ -22,17 +22,17 @@ export default {
         sidebarTitle: '#FFFFFF',
         sidebarBorder: '#374151',
         tabBackground: '#13111E',
-        
+
         // Card and component backgrounds
         cardBackground: '[#0F0E1D]/50',
         cardLightBackground: '#312E56',
         cardBorder: '#3E3A77',
-        
+
         // Brand colors
         brand: '#9150D1',
         brandLight: '#9354FF',
         brandDark: '#09092f',
-        
+
         // System colors (shadcn/ui compatible)
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
