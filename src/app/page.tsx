@@ -2,6 +2,7 @@
 import Hero from '@/features/common/landing/content/hero';
 import { FeaturesShowcase } from '@/features/common/landing/content/features-showcase/FeaturesShowcase';
 import { FeaturesTestimonials } from '@/features/common/landing/content/features-testimonials/FeaturesTestimonials';
+import LandingFooter from '@/features/common/landing/components/landing-footer/LandingFooter';
 
 export default function LandingPage() {
   return (
@@ -9,6 +10,7 @@ export default function LandingPage() {
       <Hero />
       <FeaturesShowcase />
       <FeaturesTestimonials />
+      <LandingFooter />
     </main>
   );
 }
