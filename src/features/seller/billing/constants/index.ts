@@ -1,6 +1,7 @@
 import type { Transaction, Plan, WalletInfo } from '../types';
 
 export const MOCK_WALLET: WalletInfo = {
+  isVerified: true,
   address: 'GBCXF...AQTLA',
   balance: '1,234.5678',
 };
