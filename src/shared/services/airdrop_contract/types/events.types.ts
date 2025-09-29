@@ -1,4 +1,4 @@
-import type { u64, i128 } from '@stellar/stellar-sdk/contract';
+import type { u64, i128 } from '@stellar/stellar-sdk';
 
 /**
  * Event types for the airdrop service

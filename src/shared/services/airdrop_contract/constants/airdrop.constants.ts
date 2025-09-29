@@ -1,4 +1,4 @@
-import type { u64, i128 } from '@stellar/stellar-sdk/contract';
+import type { u64, i128 } from '../types/airdrop.types';
 
 /**
  * Error codes for the airdrop contract

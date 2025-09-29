@@ -1,4 +1,4 @@
-import { Client as ContractClient } from '@stellar/stellar-sdk/contract';
+import { Client as ContractClient } from '@stellar/stellar-sdk';
 import { 
   Client as AirdropContractClient,
   networks,
