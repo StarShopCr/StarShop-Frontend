@@ -1,4 +1,4 @@
-import type { u64, i128, Map } from '@stellar/stellar-sdk/contract';
+import type { u64, i128, Map } from '../types/airdrop.types';
 import { Buffer } from 'buffer';
 import { 
   VALIDATION, 

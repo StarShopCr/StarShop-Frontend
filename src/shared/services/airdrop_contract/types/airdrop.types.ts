@@ -1,4 +1,4 @@
-import type { u32, u64, i128, Option, Map } from '@stellar/stellar-sdk/contract';
+import type { u32, u64, i128, Option, Map } from '@stellar/stellar-sdk';
 
 /**
  * Core airdrop event configuration for creating new events
