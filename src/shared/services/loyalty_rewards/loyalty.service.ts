@@ -457,8 +457,11 @@ export class LoyaltyService {
   // ─── Private Methods ─────────────────────────────────────────────────
 
   private ensureInitialized(): void {
-    if (!this.config.contractAddress || !this.isInitialized) {
+    if (!this.isInitialized) {
       throw new LoyaltyError(ERROR_MESSAGES.NOT_INITIALIZED, LOYALTY_ERROR_CODES.NOT_INITIALIZED);
+    }
+    if (!this.config.contractAddress) {
+      throw new LoyaltyError(ERROR_MESSAGES.INVALID_ADDRESS, LOYALTY_ERROR_CODES.INVALID_INPUT);
     }
   }
 
@@ -470,9 +473,11 @@ export class LoyaltyService {
   }
 
   private async callContract(method: string, params: Record<string, any>): Promise<TransactionResult> {
+    // Fail fast if client is not configured - no point retrying
+    const client = this.getContractClient();
+
     return retryWithBackoff(
       async () => {
-        const client = this.getContractClient();
         const tx = await client.call(method, params);
         return {
           success: true,
@@ -487,9 +492,11 @@ export class LoyaltyService {
   }
 
   private async queryContract(method: string, params: Record<string, any>): Promise<any> {
+    // Fail fast if client is not configured - no point retrying
+    const client = this.getContractClient();
+
     return retryWithBackoff(
       async () => {
-        const client = this.getContractClient();
         return client.query(method, params);
       },
       this.retryConfig.maxRetries,
