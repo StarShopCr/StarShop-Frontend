@@ -179,6 +179,12 @@ export class ProductFollowService {
 
     try {
       const isCurrentlyFollowing = await this.isFollowing(productId, userAddress);
+      if (!isCurrentlyFollowing.success) {
+        return this.errorResponse(
+          isCurrentlyFollowing.errorCode ?? FollowErrorCode.CONTRACT_ERROR,
+          isCurrentlyFollowing.error ?? 'Failed to check follow status'
+        );
+      }
       if (!isCurrentlyFollowing.data) {
         return this.errorResponse(FollowErrorCode.NOT_FOLLOWING);
       }
