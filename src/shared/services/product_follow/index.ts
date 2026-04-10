@@ -14,53 +14,6 @@ export * from './constants/follow.constants';
 // Utilities
 export * from './utils/follow.utils';
 
-// ==================== CONVENIENCE EXPORTS ====================
-
-export type {
-  FollowServiceConfig,
-  FollowNetworkConfig,
-  FollowResponse,
-  FollowTransactionResult,
-  ProductFollow,
-  FollowStatus,
-  Follower,
-  FollowedProduct,
-  FollowErrorCode,
-  FollowEventType,
-  FollowEventData,
-  FollowEventListener,
-  EventSubscription,
-  PaginationParams,
-  PaginatedResponse,
-  RateLimitConfig,
-  CacheConfig,
-  ProductId,
-  UserAddress,
-  FollowId
-} from './types/follow.types';
-
-export type {
-  FollowNotification,
-  NotificationType,
-  NotificationPreferences,
-  NotificationTypePreference,
-  NotificationChannel,
-  SendNotificationRequest,
-  NotificationHistoryQuery,
-  NotificationValidation
-} from './types/notification.types';
-
-export type {
-  FollowAlert,
-  AlertType,
-  AlertCondition,
-  AlertOperator,
-  CreateAlertRequest,
-  UpdateAlertRequest,
-  AlertTriggerResult,
-  AlertQuery
-} from './types/alert.types';
-
 // ==================== CONVENIENCE FUNCTIONS ====================
 
 /**
@@ -76,7 +29,7 @@ export function createProductFollowService(config: FollowServiceConfig): Product
 export function createTestnetFollowService(): ProductFollowService {
   return new ProductFollowService({
     network: {
-      contractId: 'PRODUCT_FOLLOW_TESTNET_CONTRACT_ID',
+      contractId: 'CCS7XKR3UV76MGC2XQ4ABLMTMGOUBTG2AQ4EGAL4L5CD2OQKP4X7A66G',
       networkPassphrase: 'Test SDF Network ; September 2015',
       rpcUrl: 'https://soroban-testnet.stellar.org',
       isTestnet: true

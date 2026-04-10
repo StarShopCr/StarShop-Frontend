@@ -6,7 +6,7 @@ import { AlertType } from '../types/alert.types';
 
 export const NETWORKS = {
   testnet: {
-    contractId: 'PRODUCT_FOLLOW_TESTNET_CONTRACT_ID',
+    contractId: 'CCS7XKR3UV76MGC2XQ4ABLMTMGOUBTG2AQ4EGAL4L5CD2OQKP4X7A66G',
     networkPassphrase: 'Test SDF Network ; September 2015',
     rpcUrl: 'https://soroban-testnet.stellar.org',
     isTestnet: true
