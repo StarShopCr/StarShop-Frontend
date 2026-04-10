@@ -136,6 +136,12 @@ export class ProductFollowService {
 
     try {
       const isAlreadyFollowing = await this.isFollowing(productId, userAddress);
+      if (!isAlreadyFollowing.success) {
+        return this.errorResponse(
+          isAlreadyFollowing.errorCode ?? FollowErrorCode.CONTRACT_ERROR,
+          isAlreadyFollowing.error ?? 'Failed to check follow status'
+        );
+      }
       if (isAlreadyFollowing.data) {
         return this.errorResponse(FollowErrorCode.ALREADY_FOLLOWING);
       }
@@ -145,7 +151,7 @@ export class ProductFollowService {
         followId: generateFollowId(productId, userAddress),
         productId,
         userAddress,
-        createdAt: BigInt(Date.now()) as unknown as number,
+        createdAt: Date.now(),
         isActive: true
       };
 
@@ -327,7 +333,7 @@ export class ProductFollowService {
         quietHoursStart: preferences.quietHoursStart,
         quietHoursEnd: preferences.quietHoursEnd,
         maxPerDay: preferences.maxPerDay ?? DEFAULT_NOTIFICATION_PREFERENCES.maxPerDay,
-        updatedAt: BigInt(Date.now()) as unknown as number
+        updatedAt: Date.now()
       };
 
       this.invalidateCache(CACHE_KEYS.PREFERENCES(userAddress));
@@ -359,7 +365,7 @@ export class ProductFollowService {
         enabled: true,
         typePreferences: DEFAULT_NOTIFICATION_PREFERENCES.typePreferences as unknown as NotificationTypePreference[],
         maxPerDay: DEFAULT_NOTIFICATION_PREFERENCES.maxPerDay,
-        updatedAt: BigInt(Date.now()) as unknown as number
+        updatedAt: Date.now()
       };
 
       this.setCache(cacheKey, preferences);
@@ -403,7 +409,7 @@ export class ProductFollowService {
         title: data.title,
         message: data.message,
         isRead: false,
-        createdAt: BigInt(Date.now()) as unknown as number,
+        createdAt: Date.now(),
         readAt: 0 as unknown as number,
         metadata: data.metadata
       };
@@ -479,7 +485,7 @@ export class ProductFollowService {
         conditions: request.conditions,
         isActive: true,
         isTriggered: false,
-        createdAt: BigInt(Date.now()) as unknown as number,
+        createdAt: Date.now(),
         triggeredAt: 0 as unknown as number,
         metadata: request.metadata
       };
@@ -514,8 +520,23 @@ export class ProductFollowService {
     }
 
     try {
+      // Fetch the existing alert, apply updates, and return the updated alert
+      const existingAlerts = await this.getAlerts({ userAddress, page: 0, limit: VALIDATION.ALERT.MAX_ALERTS_PER_USER });
+      const existingAlert = existingAlerts.data?.items.find(a => a.alertId === request.alertId);
+
+      if (!existingAlert) {
+        return this.errorResponse(FollowErrorCode.PRODUCT_NOT_FOUND, `Alert ${request.alertId} not found`);
+      }
+
+      const updatedAlert: FollowAlert = {
+        ...existingAlert,
+        conditions: request.conditions ?? existingAlert.conditions,
+        isActive: request.isActive ?? existingAlert.isActive,
+        metadata: request.metadata ?? existingAlert.metadata
+      };
+
       this.invalidateCache(CACHE_KEYS.ALERTS(userAddress));
-      return this.successResponse({} as FollowAlert);
+      return this.successResponse(updatedAlert);
     } catch (error) {
       return this.errorResponse(
         FollowErrorCode.CONTRACT_ERROR,
@@ -584,13 +605,31 @@ export class ProductFollowService {
     currentValues: Record<string, string | number>
   ): Promise<FollowResponse<AlertTriggerResult>> {
     try {
+      // Retrieve alert conditions and evaluate each against current values
       const matchedConditions: AlertCondition[] = [];
+
+      // Look up the alert from cache or contract to get its conditions
+      // For now, iterate all user alerts to find this one
+      for (const [key, entry] of this.cache.entries()) {
+        if (!key.startsWith('alerts:')) continue;
+        const alertsPage = entry.data as PaginatedResponse<FollowAlert>;
+        const alert = alertsPage?.items?.find((a: FollowAlert) => a.alertId === alertId);
+        if (alert) {
+          for (const condition of alert.conditions) {
+            const currentValue = currentValues[condition.field];
+            if (currentValue !== undefined && evaluateCondition(condition, currentValue)) {
+              matchedConditions.push(condition);
+            }
+          }
+          break;
+        }
+      }
 
       const result: AlertTriggerResult = {
         alertId,
         triggered: matchedConditions.length > 0,
         matchedConditions,
-        checkedAt: BigInt(Date.now()) as unknown as number
+        checkedAt: Date.now()
       };
 
       return this.successResponse(result);
@@ -666,7 +705,7 @@ export class ProductFollowService {
       type,
       productId,
       userAddress,
-      timestamp: BigInt(Date.now()) as unknown as number
+      timestamp: Date.now()
     };
 
     const listeners = this.eventListeners.get(type);
@@ -742,7 +781,7 @@ export class ProductFollowService {
     return {
       success: true,
       data,
-      timestamp: BigInt(Date.now()) as unknown as number
+      timestamp: Date.now()
     };
   }
 
@@ -751,7 +790,7 @@ export class ProductFollowService {
       success: false,
       error: message || getErrorMessage(code),
       errorCode: code,
-      timestamp: BigInt(Date.now()) as unknown as number
+      timestamp: Date.now()
     };
   }
 

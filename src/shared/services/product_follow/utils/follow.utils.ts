@@ -179,7 +179,7 @@ export function evaluateCondition(condition: AlertCondition, currentValue: strin
  * Generate a unique follow ID
  */
 export function generateFollowId(productId: string, userAddress: string): string {
-  return `follow_${productId}_${userAddress}_${Date.now()}`;
+  return `follow_${productId}_${userAddress}_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
 }
 
 /**

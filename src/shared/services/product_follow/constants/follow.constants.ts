@@ -14,7 +14,7 @@ export const NETWORKS = {
   mainnet: {
     contractId: 'PRODUCT_FOLLOW_MAINNET_CONTRACT_ID',
     networkPassphrase: 'Public Global Stellar Network ; September 2015',
-    rpcUrl: 'https://horizon.stellar.org',
+    rpcUrl: 'https://soroban-rpc.stellar.org',
     isTestnet: false
   }
 } as const;
