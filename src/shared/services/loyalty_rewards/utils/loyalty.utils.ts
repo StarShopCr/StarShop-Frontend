@@ -2,10 +2,13 @@ import { UserLevel, type Address, type CacheEntry } from '../types/loyalty.types
 import { LEVEL_THRESHOLDS, ERROR_MESSAGES } from '../constants/loyalty.constants';
 
 /**
- * Validate a Stellar address format
+ * Validate a Stellar address format (G... public key or C... contract)
  */
 export function validateAddress(address: string): boolean {
-  return typeof address === 'string' && address.length === 56 && address.startsWith('G');
+  if (typeof address !== 'string' || address.length !== 56) return false;
+  if (!address.startsWith('G') && !address.startsWith('C')) return false;
+  // Validate base32 character set (A-Z, 2-7)
+  return /^[A-Z2-7]{56}$/.test(address);
 }
 
 /**
@@ -87,10 +90,18 @@ export function calculateDiscountAmount(
  * Format points for display
  */
 export function formatPoints(points: bigint): string {
-  const num = Number(points);
-  if (num >= 1_000_000) return `${(num / 1_000_000).toFixed(1)}M`;
-  if (num >= 1_000) return `${(num / 1_000).toFixed(1)}K`;
-  return num.toString();
+  const sign = points < 0n ? '-' : '';
+  const abs = points < 0n ? -points : points;
+
+  const formatScaled = (value: bigint, divisor: bigint, suffix: string) => {
+    const whole = value / divisor;
+    const decimal = (value % divisor) / (divisor / 10n);
+    return `${sign}${whole.toString()}.${decimal.toString()}${suffix}`;
+  };
+
+  if (abs >= 1_000_000n) return formatScaled(abs, 1_000_000n, 'M');
+  if (abs >= 1_000n) return formatScaled(abs, 1_000n, 'K');
+  return `${sign}${abs.toString()}`;
 }
 
 /**

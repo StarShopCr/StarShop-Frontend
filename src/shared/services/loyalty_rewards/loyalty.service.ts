@@ -356,7 +356,12 @@ export class LoyaltyService {
       throw new LoyaltyError(ERROR_MESSAGES.INVALID_ADDRESS, LOYALTY_ERROR_CODES.INVALID_INPUT);
     }
 
-    return this.callContract(CONTRACT_METHODS.CHECK_AND_COMPLETE_MILESTONES, { user });
+    const result = await this.callContract(CONTRACT_METHODS.CHECK_AND_COMPLETE_MILESTONES, { user });
+    if (result.success) {
+      this.clearCache(`${CACHE_KEYS.POINTS_BALANCE}_${user}`);
+      this.clearCache(`${CACHE_KEYS.USER_DATA}_${user}`);
+    }
+    return result;
   }
 
   // ─── Rewards Management ──────────────────────────────────────────────
@@ -452,30 +457,28 @@ export class LoyaltyService {
   // ─── Private Methods ─────────────────────────────────────────────────
 
   private ensureInitialized(): void {
-    if (!this.config.contractAddress) {
+    if (!this.config.contractAddress || !this.isInitialized) {
       throw new LoyaltyError(ERROR_MESSAGES.NOT_INITIALIZED, LOYALTY_ERROR_CODES.NOT_INITIALIZED);
     }
+  }
+
+  private getContractClient() {
+    if (!this.contractClient) {
+      throw new LoyaltyError(ERROR_MESSAGES.CONTRACT_ERROR, LOYALTY_ERROR_CODES.CONTRACT_ERROR);
+    }
+    return this.contractClient;
   }
 
   private async callContract(method: string, params: Record<string, any>): Promise<TransactionResult> {
     return retryWithBackoff(
       async () => {
-        try {
-          // Contract client interaction would happen here
-          // This is a placeholder for actual Soroban contract calls
-          const tx = await this.contractClient?.call(method, params);
-          return {
-            success: true,
-            hash: tx?.hash,
-            timestamp: Date.now(),
-          };
-        } catch (error) {
-          return {
-            success: false,
-            error: error instanceof Error ? error.message : String(error),
-            timestamp: Date.now(),
-          };
-        }
+        const client = this.getContractClient();
+        const tx = await client.call(method, params);
+        return {
+          success: true,
+          hash: tx?.hash,
+          timestamp: Date.now(),
+        };
       },
       this.retryConfig.maxRetries,
       this.retryConfig.baseDelay,
@@ -486,8 +489,8 @@ export class LoyaltyService {
   private async queryContract(method: string, params: Record<string, any>): Promise<any> {
     return retryWithBackoff(
       async () => {
-        // Contract client query interaction would happen here
-        return this.contractClient?.query(method, params);
+        const client = this.getContractClient();
+        return client.query(method, params);
       },
       this.retryConfig.maxRetries,
       this.retryConfig.baseDelay,

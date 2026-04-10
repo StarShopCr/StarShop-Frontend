@@ -1,4 +1,5 @@
 import type { Address, u32, u64, i128 } from './loyalty.types';
+import { UserLevel } from './loyalty.types';
 
 export interface Reward {
   id: string;
@@ -12,7 +13,7 @@ export interface Reward {
   stock?: u32;
   expiresAt?: u64;
   createdAt: u64;
-  minLevel?: string;
+  minLevel?: UserLevel;
 }
 
 export enum RewardType {
@@ -43,7 +44,7 @@ export interface CreateRewardRequest {
   maxDiscountAmount?: i128;
   stock?: u32;
   expiresAt?: u64;
-  minLevel?: string;
+  minLevel?: UserLevel;
 }
 
 export interface RedeemRewardRequest {
@@ -61,7 +62,7 @@ export interface DiscountCalculation {
 }
 
 export interface LevelRequirements {
-  level: string;
+  level: UserLevel;
   minLifetimePoints: i128;
   minPurchaseCount?: u32;
   benefits: string[];
@@ -89,7 +90,7 @@ export interface UserLoyaltyData {
   user: Address;
   currentPoints: i128;
   lifetimePoints: i128;
-  level: string;
+  level: UserLevel;
   registeredAt: u64;
   lastActivityAt: u64;
   purchaseCount: u32;
