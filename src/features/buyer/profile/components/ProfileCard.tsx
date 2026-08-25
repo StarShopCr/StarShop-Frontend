@@ -1,9 +1,13 @@
+import { useUserName } from '@/shared/stores/userStore';
+
 export function ProfileCard() {
+  const userName = useUserName();
+
   return (
     <div className="bg-custom-card-background rounded-lg p-6 border border-white/30 shadow-[0_0_10px_0_rgba(255,255,255,0.1)] flex flex-col items-center">
       <div className="w-24 h-24 rounded-full bg-gray-700 mb-4 border-4 border-white/20" />
       <div className="text-white text-xl font-semibold mb-1">
-        Matias Aguilar
+        {userName || "Guest User"}
       </div>
       <div className="text-purple-400 text-sm mb-4">Premium Member</div>
       <button className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-white hover:bg-gray-800">
