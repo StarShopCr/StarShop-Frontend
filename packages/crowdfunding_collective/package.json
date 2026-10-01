@@ -1,0 +1,16 @@
+{
+  "name": "crowdfunding_collective",
+  "version": "1.0.0",
+  "description": "TypeScript bindings for Crowdfunding Collective Stellar Contract",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^12.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
