@@ -4,6 +4,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+    "baseUrl": ".",
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -24,5 +25,5 @@
     ]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "packages"]
+  "exclude": ["node_modules", "packages", "src/shared/services"]
 }
