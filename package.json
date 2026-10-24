@@ -11,6 +11,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "type-check": "tsc --noEmit",
+    "test": "tsx --test src/shared/services/limited_time_drop/tests/limited_drop.service.test.ts",
     "validate-all": "./scripts/validate-all.sh",
     "prepare": "husky"
   },
@@ -48,7 +49,6 @@
     "react-i18next": "^15.5.2",
     "react-icons": "^5.5.0",
     "recharts": "^2.15.1",
-    "startshop-frontend": "file:",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "zustand": "^5.0.2"
