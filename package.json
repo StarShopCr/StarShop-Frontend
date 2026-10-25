@@ -11,6 +11,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "type-check": "tsc --noEmit",
+    "test": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\",\"jsx\":\"react-jsx\"}' node -r ./node_modules/ts-node/register -r tsconfig-paths/register --test 'src/**/*.test.ts*'",
     "validate-all": "./scripts/validate-all.sh",
     "prepare": "husky"
   },
@@ -48,7 +49,6 @@
     "react-i18next": "^15.5.2",
     "react-icons": "^5.5.0",
     "recharts": "^2.15.1",
-    "startshop-frontend": "file:",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "zustand": "^5.0.2"
@@ -70,11 +70,13 @@
     "eslint-config-next": "15.0.3",
     "husky": "^9.1.7",
     "ignore-loader": "^0.1.2",
+    "jsdom": "^30.1.2",
     "lint-staged": "^16.1.2",
     "postcss": "^8.5.3",
     "prettier": "^3.6.1",
     "tailwindcss": "^3.4.17",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^3.15.0",
     "typescript": "^5"
   },
   "resolutions": {
