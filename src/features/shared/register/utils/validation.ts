@@ -4,7 +4,11 @@ export const validateEmail = (email: string): boolean => {
 };
 
 export const validateName = (name: string): boolean => {
-  return name.trim().length >= 2;
+  const trimmed = name.trim();
+  if (trimmed.length < 2) return false;
+  // Ensure name contains only letters and spaces
+  const nameRegex = /^[A-Za-z\s]+$/;
+  return nameRegex.test(trimmed);
 };
 
 export const validateRegistrationData = (
