@@ -29,4 +29,5 @@ export interface StarConfig {
   count: number;
   maxSize: number;
   minSize: number;
+  density: StarDensity; // Added to provide density configuration for stars
 }
