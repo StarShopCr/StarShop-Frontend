@@ -1,6 +1,8 @@
 export const validateEmail = (email: string): boolean => {
+  // Trim whitespace to allow emails with accidental leading/trailing spaces
+  const trimmedEmail = email.trim();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+  return emailRegex.test(trimmedEmail);
 };
 
 export const validateName = (name: string): boolean => {
